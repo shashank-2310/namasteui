@@ -17,10 +17,20 @@ const page = () => {
             </p>
             <div className="flex flex-col gap-1 text-sm sm:text-base">
                 <p className='text-muted-foreground'>
-                    1. Refer to shadcn installation <Link href={"https://ui.shadcn.com/docs/installation"} className='underline hover:text-purple'>docs.</Link>
+                    1. Refer to shadcn installation
+                    <Link
+                        href={"https://ui.shadcn.com/docs/installation"}
+                        className='underline hover:text-purple'
+                        target='_blank'
+                    >docs.</Link>
                 </p>
                 <p className='text-muted-foreground'>
-                    2. Refer to magicui installation <Link href={"https://magicui.design/docs/installation"} className='underline hover:text-purple'>docs.</Link>
+                    2. Refer to magicui installation
+                    <Link
+                        href={"https://magicui.design/docs/installation"}
+                        className='underline hover:text-purple'
+                        rel='noopener noreferrer'
+                    >docs.</Link>
                 </p>
             </div>
             <p className='text-muted-foreground text-sm sm:text-base'>
@@ -29,7 +39,13 @@ const page = () => {
             <div className="flex flex-col gap-1">
                 <h1 className='text-sm sm:text-base lg:text-xl font-medium'>Dark Mode</h1>
                 <p className='text-muted-foreground text-sm sm:text-base'>
-                    For dark mode, refer to docs on <Link href={"https://ui.shadcn.com/docs/dark-mode"} className='underline hover:text-purple'>shadcn/dark-mode</Link>.
+                    For dark mode, refer to docs on
+                    <Link
+                        href={"https://ui.shadcn.com/docs/dark-mode"}
+                        className='underline hover:text-purple'
+                        target='_blank'
+                        rel='noopener noreferrer'
+                    >shadcn/dark-mode</Link>.
                 </p>
             </div>
             <div className="w-full justify-end flex mt-2">
