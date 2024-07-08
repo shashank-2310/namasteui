@@ -1,10 +1,17 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import "./globals.css";
-import Navbar from "@/components/Navbar";
-import { ThemeProvider } from "@/components/theme-provider";
+import Navbar from "@/components/shared/Navbar";
+import { ThemeProvider } from "@/components/shared/theme-provider";
 
-const inter = Inter({ subsets: ["latin"] });
+import { Poppins } from "next/font/google";
+import Footer from "@/components/shared/Footer";
+
+const poppins = Poppins({
+  subsets: ["latin"],
+  weight: ['400', '500', '600', '700'],
+  variable: '--font-poppins',
+});
+
 
 export const metadata: Metadata = {
   title: "NamasteUI",
@@ -18,7 +25,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={inter.className}>
+      <body className={poppins.className}>
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"
@@ -27,6 +34,7 @@ export default function RootLayout({
         >
           <Navbar />
           {children}
+          <Footer />
         </ThemeProvider>
       </body>
     </html>

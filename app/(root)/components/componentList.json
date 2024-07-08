@@ -1,0 +1,124 @@
+{
+    "components": [
+        {
+            "name": "accordion",
+            "link": "accordion"
+        },
+        {
+            "name": "alert",
+            "link": "alert"
+        },
+        {
+            "name": "alert dialog",
+            "link": "alert-dialog"
+        },
+        {
+            "name": "avatar",
+            "link": "avatar"
+        },
+        {
+            "name": "badge",
+            "link": "badge"
+        },
+        {
+            "name": "button",
+            "link": "button"
+        },
+        {
+            "name": "card",
+            "link": "card"
+        },
+        {
+            "name": "carousel",
+            "link": "carousel"
+        },
+        {
+            "name": "checkbox",
+            "link": "checkbox"
+        },
+        {
+            "name": "collapsible",
+            "link": "collapsible"
+        },
+        {
+            "name": "dialog",
+            "link": "dialog"
+        },
+        {
+            "name": "drawer",
+            "link": "drawer"
+        },
+        {
+            "name": "dropdown menu",
+            "link": "dropdown-menu"
+        },
+        {
+            "name": "form",
+            "link": "form"
+        },
+        {
+            "name": "input",
+            "link": "input"
+        },
+        {
+            "name": "label",
+            "link": "label"
+        },
+        {
+            "name": "menubar",
+            "link": "menubar"
+        },
+        {
+            "name": "navigation menu",
+            "link": "navigation-menu"
+        },
+        {
+            "name": "progress",
+            "link": "progress"
+        },
+        {
+            "name": "radio group",
+            "link": "radio-group"
+        },
+        {
+            "name": "scroll area",
+            "link": "scroll-area"
+        },
+        {
+            "name": "select",
+            "link": "select"
+        },
+        {
+            "name": "separator",
+            "link": "separator"
+        },
+        {
+            "name": "slider",
+            "link": "slider"
+        },
+        {
+            "name": "switch",
+            "link": "switch"
+        },
+        {
+            "name": "tabs",
+            "link": "tabs"
+        },
+        {
+            "name": "textarea",
+            "link": "textarea"
+        },
+        {
+            "name": "toast",
+            "link": "toast"
+        },
+        {
+            "name": "toggle",
+            "link": "toggle"
+        },
+        {
+            "name": "tooltip",
+            "link": "tooltip"
+        }
+    ]
+}
