@@ -50,8 +50,8 @@ const page = () => {
             </div>
             <div className="w-full justify-end flex mt-2">
                 <Button variant={"outline"} size={"lg"} className='w-fit text-sm rounded-xl border-foreground hover:bg-foreground hover:text-background'>
-                    <Link href={"/components"} className='flex items-center gap-1'>
-                        Components <ChevronRight className='size-5' />
+                    <Link href={"/docs/components"} className='flex items-center gap-1'>
+                        Browse Components <ChevronRight className='size-5' />
                     </Link>
                 </Button>
             </div>

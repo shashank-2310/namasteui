@@ -22,21 +22,21 @@ const Navbar = () => {
                     <h1 className='font-semibold lg:font-bold text-lg lg:text-xl tracking-wide'>NamasteUI</h1>
                 </Link>
             </Button>
-            <nav className='hidden sm:flex flex-row gap-3 lg:gap-6 items-center'>
+            <nav className='hidden sm:flex flex-row gap-2 lg:gap-6 items-center'>
                 <Button variant="link" className='text-base'>
                     <Link href={"/"} className={`${pathName == '/' ? 'underline' : ''}`}>Home</Link>
                 </Button>
                 <Button variant="link" className='text-base'>
-                    <Link href={"/components"} className={`${pathName == '/components' ? 'underline' : ''}`}>Components</Link>
+                    <Link href={"/docs/components"} className={`${pathName == '/docs/components' ? 'underline' : ''}`}>Components</Link>
                 </Button>
                 <Button variant="link" className='text-base'>
                     <Link href={"/docs"} className={`${pathName == '/docs' ? 'underline' : ''}`}>Docs</Link>
                 </Button>
             </nav>
-            <div className="flex flex-row items-center gap-1 sm:gap-3 lg:gap-6">
+            <div className="flex flex-row items-center gap-1 sm:gap-2 lg:gap-6">
                 <Button variant="ghost" size="icon" className='dark:hover:bg-white dark:hover:text-black hover:bg-black hover:text-white'>
                     <Link href={"https://twitter.com/shashankgupta_2"} rel="noopener noreferrer" target='_blank'>
-                        <Icons.twitter className='size-5 sm:size-6' />
+                        <Icons.twitter className='size-4 sm:size-5' />
                     </Link>
                 </Button>
                 <Button variant="ghost" size="icon" className='dark:hover:bg-white dark:hover:text-black hover:bg-black hover:text-white'>
