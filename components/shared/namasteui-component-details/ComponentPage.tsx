@@ -11,7 +11,7 @@ const ComponentPage = () => {
     return (
         <section className='flex flex-col gap-3 lg:gap-8 w-full py-2 px-4 sm:p-7 lg:p-12'>
             <ComponentIntro componentName={pathName} />
-            <ComponentPreviewAndCode />
+            <ComponentPreviewAndCode componentName={pathName} />
         </section>
     )
 }

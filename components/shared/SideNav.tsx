@@ -9,7 +9,7 @@ const SideNav = () => {
     const pathName = usePathname();
 
     return (
-        <ScrollArea className='scroll-smooth flex flex-col py-2 px-4 sm:p-7 lg:p-12 h-full sm:h-screen text-left'>
+        <ScrollArea className='scroll-smooth flex flex-col py-2 px-4 sm:p-7 lg:p-12 h-[80dvh] text-left'>
             <div className="flex flex-col gap-1">
                 <span className='text-base font-semibold text-secondary-foreground'>Getting Started</span>
                 <Link href={"/docs"} className={`${pathName === '/docs' ? 'text-secondary-foreground' : 'text-muted-foreground'}  text-sm hover:underline`}>Introduction</Link>

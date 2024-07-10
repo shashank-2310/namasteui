@@ -2,11 +2,11 @@ import React from 'react'
 import { ChevronRight } from 'lucide-react'
 import componentList from '@/app/docs/components/componentList.json'
 
-type HeadingProps = {
+export type ComponentProps = {
     componentName: string
 }
 
-const ComponentIntro = ({ componentName }: HeadingProps) => {
+const ComponentIntro = ({ componentName }: ComponentProps) => {
     return (
         <div className='flex flex-col gap-4'>
             <div className="flex flex-col gap-3 lg:gap-8">
@@ -20,7 +20,7 @@ const ComponentIntro = ({ componentName }: HeadingProps) => {
                 </h1>
             </div>
             <p className='text-sm sm:text-base'>
-                {componentList.components.find((item) => item.name === componentName)?.desc || 'Component description not found'}
+                {componentList.components.find((item) => item.name === componentName)?.desc || 'Component description not found.'}
             </p>
         </div>
     )

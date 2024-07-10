@@ -1,10 +1,11 @@
 import React from 'react'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import AccordionComponent from '@/ui library/AccordionComponent'
 import ComponentCode from './ComponentCode'
+import { ComponentProps } from './ComponentIntro'
+import { Components } from './ComponentPreviewAndCodeList'
 
 
-const ComponentPreviewAndCode = () => {
+const ComponentPreviewAndCode = ({ componentName }: ComponentProps) => {
 
     return (
         <Tabs defaultValue="preview" className="w-full lg:w-3/4 text-sm sm:text-base">
@@ -14,11 +15,11 @@ const ComponentPreviewAndCode = () => {
             </TabsList>
             <TabsContent value="preview">
                 <div className="border border-muted-foreground/30 rounded-lg px-10 sm:px-20 lg:px-28 w-full lg:w-4/5 flex items-center justify-center min-h-80">
-                    <AccordionComponent />
+                    {Components.find((item) => item.name === componentName)?.preview || "There's some error. Please try again later."}
                 </div>
             </TabsContent>
             <TabsContent value="code">
-                <ComponentCode />
+                <ComponentCode componentName={componentName} />
             </TabsContent>
         </Tabs>
 

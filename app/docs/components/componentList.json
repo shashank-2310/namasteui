@@ -11,19 +11,9 @@
             "desc": "Displays a message to the user, often to convey important information or a status update."
         },
         {
-            "name": "alert dialog",
-            "link": "alert-dialog",
-            "desc": "A modal dialog that displays an alert message and allows the user to respond with an action."
-        },
-        {
             "name": "avatar",
             "link": "avatar",
             "desc": "Displays a user's profile picture or initials in a circular or square shape."
-        },
-        {
-            "name": "badge",
-            "link": "badge",
-            "desc": "A small, often circular, indicator that displays a count or status next to an element."
         },
         {
             "name": "button",
@@ -41,24 +31,9 @@
             "desc": "Displays a collection of content (images, text, etc.) in a scrollable, horizontal layout."
         },
         {
-            "name": "checkbox",
-            "link": "checkbox",
-            "desc": "Allows the user to make a binary choice (on/off, yes/no) by checking or unchecking a box."
-        },
-        {
-            "name": "collapsible",
-            "link": "collapsible",
-            "desc": "A container that can be expanded or collapsed to show or hide its content."
-        },
-        {
             "name": "dialog",
             "link": "dialog",
             "desc": "A modal window that displays content or prompts the user for input, blocking the main interface."
-        },
-        {
-            "name": "drawer",
-            "link": "drawer",
-            "desc": "A panel that slides in from the side of the screen, often used for navigation or additional content."
         },
         {
             "name": "dropdown menu",
@@ -96,16 +71,6 @@
             "desc": "Displays the current progress of a task or operation, often as a visual bar or circular indicator."
         },
         {
-            "name": "radio group",
-            "link": "radio-group",
-            "desc": "A set of radio buttons that allow the user to select one option from a group."
-        },
-        {
-            "name": "scroll area",
-            "link": "scroll-area",
-            "desc": "A container that allows the user to scroll through content that exceeds the available viewport."
-        },
-        {
             "name": "select",
             "link": "select",
             "desc": "Allows the user to choose one or more options from a dropdown list."
@@ -119,11 +84,6 @@
             "name": "slider",
             "link": "slider",
             "desc": "Allows the user to select a value from a range by dragging a handle along a track."
-        },
-        {
-            "name": "switch",
-            "link": "switch",
-            "desc": "Provides a toggle control that allows the user to enable or disable a setting or option."
         },
         {
             "name": "tabs",
@@ -144,11 +104,6 @@
             "name": "toggle",
             "link": "toggle",
             "desc": "Provides a switch-like control that allows the user to enable or disable a setting or option."
-        },
-        {
-            "name": "tooltip",
-            "link": "tooltip",
-            "desc": "Displays additional information or context when the user hovers over or interacts with an element."
         }
     ]
 }
