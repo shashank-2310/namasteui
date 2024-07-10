@@ -36,7 +36,7 @@ const page = () => {
                 <Faqs />
             </div>
             <div className="w-full justify-end flex mt-2">
-                <Button variant={"outline"} size={"lg"} className='w-fit text-sm rounded-xl border-foreground hover:bg-foreground hover:text-background'>
+                <Button variant={"outline"} size={"lg"} className='w-fit text-sm sm:text-base rounded-xl border-foreground hover:bg-foreground hover:text-background'>
                     <Link href={"/docs/installation"} className='flex items-center gap-1'>
                         Installation <ChevronRight className='size-5'/>
                     </Link>

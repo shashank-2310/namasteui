@@ -15,11 +15,11 @@ const ComponentIntro = ({ componentName }: ComponentProps) => {
                     <ChevronRight className='size-4' />
                     {componentName}
                 </p>
-                <h1 className='text-base sm:text-lg lg:text-2xl font-semibold capitalize'>
+                <h1 className='text-xl lg:text-2xl font-semibold capitalize'>
                     {componentName}
                 </h1>
             </div>
-            <p className='text-sm sm:text-base'>
+            <p className='text-sm sm:text-base lg:text-lg'>
                 {componentList.components.find((item) => item.name === componentName)?.desc || 'Component description not found.'}
             </p>
         </div>

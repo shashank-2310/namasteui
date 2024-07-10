@@ -27,7 +27,7 @@ const Navbar = () => {
                     <Link href={"/"} className={`${pathName === '/' ? 'underline' : ''}`}>Home</Link>
                 </Button>
                 <Button variant="link" className='text-base'>
-                    <Link href={"/docs/components/accordion"} className={`${pathName.includes('components') ? 'underline' : ''}`}>Components</Link>
+                    <Link href={"/docs/components"} className={`${pathName.includes('components') ? 'underline' : ''}`}>Components</Link>
                 </Button>
                 <Button variant="link" className='text-base'>
                     <Link href={"/docs"} className={`${pathName === '/docs' || pathName === '/docs/installation' ? 'underline' : ''}`}>Docs</Link>

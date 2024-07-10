@@ -9,19 +9,19 @@ const SideNav = () => {
     const pathName = usePathname();
 
     return (
-        <ScrollArea className='scroll-smooth flex flex-col py-2 px-4 sm:p-7 lg:p-12 h-[80dvh] text-left'>
+        <ScrollArea className='flex flex-col pt-2 pb-10 px-4 sm:p-7 lg:p-12 h-[90dvh] sm:h-full text-left'>
             <div className="flex flex-col gap-1">
-                <span className='text-base font-semibold text-secondary-foreground'>Getting Started</span>
-                <Link href={"/docs"} className={`${pathName === '/docs' ? 'text-secondary-foreground' : 'text-muted-foreground'}  text-sm hover:underline`}>Introduction</Link>
-                <Link href={"/docs/installation"} className={`${pathName === '/docs/installation' ? 'text-secondary-foreground' : 'text-muted-foreground'}  text-sm hover:underline`}>Installation</Link>
+                <span className='text-base lg:text-lg font-semibold text-secondary-foreground'>Getting Started</span>
+                <Link href={"/docs"} className={`${pathName === '/docs' ? 'text-secondary-foreground' : 'text-muted-foreground'}  text-sm lg:text-base hover:underline`}>Introduction</Link>
+                <Link href={"/docs/installation"} className={`${pathName === '/docs/installation' ? 'text-secondary-foreground' : 'text-muted-foreground'}  text-sm lg:text-base hover:underline`}>Installation</Link>
             </div>
             <div className="flex flex-col gap-1 mt-4">
-                <span className='text-base font-semibold text-secondary-foreground'>Components</span>
+                <span className='text-base lg:text-lg font-semibold text-secondary-foreground'>Components</span>
                 {componentList.components.map((item) => (
                     <Link
                         key={item.name}
                         href={`/docs/components/${item.link}`}
-                        className={`${pathName === `/docs/components/${item.link}` ? 'text-secondary-foreground' : 'text-muted-foreground'} text-sm hover:underline capitalize`}
+                        className={`${pathName === `/docs/components/${item.link}` ? 'text-secondary-foreground' : 'text-muted-foreground'} text-sm lg:text-base hover:underline capitalize`}
                     >
                         {item.name}
                     </Link>
