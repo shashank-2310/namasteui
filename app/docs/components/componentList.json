@@ -2,123 +2,153 @@
     "components": [
         {
             "name": "accordion",
-            "link": "accordion"
+            "link": "accordion",
+            "desc": "Vertically stacked panels that can be expanded or collapsed to show/hide content."
         },
         {
             "name": "alert",
-            "link": "alert"
+            "link": "alert",
+            "desc": "Displays a message to the user, often to convey important information or a status update."
         },
         {
             "name": "alert dialog",
-            "link": "alert-dialog"
+            "link": "alert-dialog",
+            "desc": "A modal dialog that displays an alert message and allows the user to respond with an action."
         },
         {
             "name": "avatar",
-            "link": "avatar"
+            "link": "avatar",
+            "desc": "Displays a user's profile picture or initials in a circular or square shape."
         },
         {
             "name": "badge",
-            "link": "badge"
+            "link": "badge",
+            "desc": "A small, often circular, indicator that displays a count or status next to an element."
         },
         {
             "name": "button",
-            "link": "button"
+            "link": "button",
+            "desc": "Allows the user to trigger an action or event by clicking or tapping on it."
         },
         {
             "name": "card",
-            "link": "card"
+            "link": "card",
+            "desc": "A container that displays content and related actions in a structured, visually appealing way."
         },
         {
             "name": "carousel",
-            "link": "carousel"
+            "link": "carousel",
+            "desc": "Displays a collection of content (images, text, etc.) in a scrollable, horizontal layout."
         },
         {
             "name": "checkbox",
-            "link": "checkbox"
+            "link": "checkbox",
+            "desc": "Allows the user to make a binary choice (on/off, yes/no) by checking or unchecking a box."
         },
         {
             "name": "collapsible",
-            "link": "collapsible"
+            "link": "collapsible",
+            "desc": "A container that can be expanded or collapsed to show or hide its content."
         },
         {
             "name": "dialog",
-            "link": "dialog"
+            "link": "dialog",
+            "desc": "A modal window that displays content or prompts the user for input, blocking the main interface."
         },
         {
             "name": "drawer",
-            "link": "drawer"
+            "link": "drawer",
+            "desc": "A panel that slides in from the side of the screen, often used for navigation or additional content."
         },
         {
             "name": "dropdown menu",
-            "link": "dropdown-menu"
+            "link": "dropdown-menu",
+            "desc": "A menu that appears when the user clicks or hovers over a trigger element, allowing them to select an option."
         },
         {
             "name": "form",
-            "link": "form"
+            "link": "form",
+            "desc": "A container for collecting user input, such as text, numbers, or selections."
         },
         {
             "name": "input",
-            "link": "input"
+            "link": "input",
+            "desc": "Allows the user to enter and edit text, numbers, or other data."
         },
         {
             "name": "label",
-            "link": "label"
+            "link": "label",
+            "desc": "Provides a descriptive text label for an input or other UI element."
         },
         {
             "name": "menubar",
-            "link": "menubar"
+            "link": "menubar",
+            "desc": "A horizontal menu bar that provides access to various commands or actions."
         },
         {
             "name": "navigation menu",
-            "link": "navigation-menu"
+            "link": "navigation-menu",
+            "desc": "A menu that allows the user to navigate to different sections or pages of an application."
         },
         {
             "name": "progress",
-            "link": "progress"
+            "link": "progress",
+            "desc": "Displays the current progress of a task or operation, often as a visual bar or circular indicator."
         },
         {
             "name": "radio group",
-            "link": "radio-group"
+            "link": "radio-group",
+            "desc": "A set of radio buttons that allow the user to select one option from a group."
         },
         {
             "name": "scroll area",
-            "link": "scroll-area"
+            "link": "scroll-area",
+            "desc": "A container that allows the user to scroll through content that exceeds the available viewport."
         },
         {
             "name": "select",
-            "link": "select"
+            "link": "select",
+            "desc": "Allows the user to choose one or more options from a dropdown list."
         },
         {
             "name": "separator",
-            "link": "separator"
+            "link": "separator",
+            "desc": "A visual divider that separates and groups related content or UI elements."
         },
         {
             "name": "slider",
-            "link": "slider"
+            "link": "slider",
+            "desc": "Allows the user to select a value from a range by dragging a handle along a track."
         },
         {
             "name": "switch",
-            "link": "switch"
+            "link": "switch",
+            "desc": "Provides a toggle control that allows the user to enable or disable a setting or option."
         },
         {
             "name": "tabs",
-            "link": "tabs"
+            "link": "tabs",
+            "desc": "A set of related content panels that can be switched between by clicking on their corresponding tab."
         },
         {
             "name": "textarea",
-            "link": "textarea"
+            "link": "textarea",
+            "desc": "Allows the user to enter and edit multi-line text, often used for longer form inputs."
         },
         {
             "name": "toast",
-            "link": "toast"
+            "link": "toast",
+            "desc": "A temporary, non-intrusive notification that appears and disappears automatically."
         },
         {
             "name": "toggle",
-            "link": "toggle"
+            "link": "toggle",
+            "desc": "Provides a switch-like control that allows the user to enable or disable a setting or option."
         },
         {
             "name": "tooltip",
-            "link": "tooltip"
+            "link": "tooltip",
+            "desc": "Displays additional information or context when the user hovers over or interacts with an element."
         }
     ]
 }

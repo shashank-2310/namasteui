@@ -1,6 +1,6 @@
 import SideNav from "@/components/shared/SideNav"
 
-export default function ComponentsLayout({
+export default function DocsLayout({
     children,
 }: Readonly<{
     children: React.ReactNode;

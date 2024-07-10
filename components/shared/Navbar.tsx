@@ -12,7 +12,7 @@ const Navbar = () => {
     const pathName = usePathname();
 
     return (
-        <div className='bg-background relative z-10 text-black dark:border-none border-b border-purple dark:text-white p-3 lg:p-4 flex flex-row justify-between items-center w-full'>
+        <section className='bg-background relative z-10 text-black dark:border-none border-b border-purple dark:text-white p-3 lg:p-4 flex flex-row justify-between items-center w-full'>
             <div className="sm:hidden flex items-center">
                 <MobileNav />
             </div>
@@ -24,13 +24,13 @@ const Navbar = () => {
             </Button>
             <nav className='hidden sm:flex flex-row gap-2 lg:gap-6 items-center'>
                 <Button variant="link" className='text-base'>
-                    <Link href={"/"} className={`${pathName == '/' ? 'underline' : ''}`}>Home</Link>
+                    <Link href={"/"} className={`${pathName === '/' ? 'underline' : ''}`}>Home</Link>
                 </Button>
                 <Button variant="link" className='text-base'>
-                    <Link href={"/docs/components"} className={`${pathName == '/docs/components' ? 'underline' : ''}`}>Components</Link>
+                    <Link href={"/docs/components/accordion"} className={`${pathName.includes('components') ? 'underline' : ''}`}>Components</Link>
                 </Button>
                 <Button variant="link" className='text-base'>
-                    <Link href={"/docs"} className={`${pathName == '/docs' ? 'underline' : ''}`}>Docs</Link>
+                    <Link href={"/docs"} className={`${pathName === '/docs' || pathName === '/docs/installation' ? 'underline' : ''}`}>Docs</Link>
                 </Button>
             </nav>
             <div className="flex flex-row items-center gap-1 sm:gap-2 lg:gap-6">
@@ -51,7 +51,7 @@ const Navbar = () => {
                 </Button>
                 <ModeToggle />
             </div>
-        </div>
+        </section>
     )
 }
 

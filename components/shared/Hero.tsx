@@ -27,7 +27,7 @@ const Hero = () => {
                 </p>
                 <div className='flex flex-col lg:flex-row gap-5 lg:gap-8 mt-1 sm:mt-0'>
                     <Button size="lg" className='rounded-xl hover:bg-purple'>
-                        <Link href={"/docs/components"} className='flex flex-row gap-1 items-center text-base'>
+                        <Link href={"/docs/components/accordion"} className='flex flex-row gap-1 items-center text-base'>
                             Browse Components
                             <ChevronRight />
                         </Link>
@@ -47,7 +47,7 @@ const Hero = () => {
                 </div>
             </div>
             <div className="w-full sm:fit lg:w-full lg:flex lg:justify-end sm:mt-8 lg:mt-1">
-                <Image src="/hero.gif" alt='hero' height={500} width={500} priority />
+                <Image src="/hero.gif" alt='hero' height={500} width={500} priority unoptimized className='aspect-square' />
             </div>
         </section>
     )
