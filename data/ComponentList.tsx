@@ -29,48 +29,82 @@ type ComponentType = {
     preview: React.ReactNode;
     code: string;
 }
+const items = [
+    {
+        title: 'Is it accessible?',
+        content: 'Yes. It adheres to the WAI-ARIA design pattern.',
+    },
+    {
+        title: 'Is it styled?',
+        content: 'Yes. It comes with default styles that matches the other component\'s aesthetic.',
+    },
+    {
+        title: 'Is it animated?',
+        content: 'Yes. It\'s animated by default, but you can disable it if you prefer.',
+    },
+];
 
 const Components: ComponentType[] = [
     {
         name: "accordion",
         desc: "Vertically stacked panels that can be expanded or collapsed to show/hide content.",
         link: "accordion",
-        preview: <AccordionComponent />,
-        code: `import React from 'react'
-import {
-    Accordion,
-    AccordionContent,
-    AccordionItem,
-    AccordionTrigger,
-} from "@/components/ui/accordion"
+        preview: <AccordionComponent items={items} />,
+        code: `"use client"
 
-const AccordionComponent = () => {
+import { cn } from '@/lib/utils';
+import { ChevronDown, ChevronRight } from 'lucide-react';
+import React, { useState } from 'react';
+
+type AccordionProps = {
+    items: { title: string; content: string }[];
+    outerContainerClassName?: string;
+    innerContainerClassName?: string;
+    titleClassName?: string;
+    contentClassName?: string;
+    separatorClassName?: string;
+};
+
+const AccordionComponent: React.FC<AccordionProps> = ({
+    items,
+    outerContainerClassName,
+    innerContainerClassName,
+    titleClassName,
+    contentClassName,
+    separatorClassName
+}) => {
+    const [activeIndex, setActiveIndex] = useState<number | null>(null);
+
+    const toggleAccordion = (index: number) => {
+        if (activeIndex === index) {
+            setActiveIndex(null);
+        } else {
+            setActiveIndex(index);
+        }
+    };
+
     return (
-        <Accordion type="single" collapsible">
-            <AccordionItem value="item-1">
-                <AccordionTrigger>Is it accessible?</AccordionTrigger>
-                <AccordionContent>
-                    Yes. It adheres to the WAI-ARIA design pattern.
-                </AccordionContent>
-            </AccordionItem>
-            <AccordionItem value="item-2">
-                <AccordionTrigger>Is it styled?</AccordionTrigger>
-                <AccordionContent>
-                    Yes. It comes with default styles that matches the other
-                    component's aesthetic.
-                </AccordionContent>
-            </AccordionItem>
-            <AccordionItem value="item-3">
-                <AccordionTrigger>Is it animated?</AccordionTrigger>
-                <AccordionContent>
-                    Yes. It's animated by default, but you can disable it if you
-                    prefer.
-                </AccordionContent>
-            </AccordionItem>
-        </Accordion>
-    )
-}
-export default AccordionComponent`,
+        <div className={cn('flex flex-col w-full relative', outerContainerClassName)}>
+            {items.map((item, index) => (
+                <>
+                    <details key={index} className={cn('mb-3', innerContainerClassName)}>
+                        <summary
+                            onClick={() => toggleAccordion(index)}
+                            className="flex flex-wrap gap-4 items-center cursor-pointer"
+                        >
+                            <p className={cn("flex flex-1 p-1", titleClassName)}>{item.title}</p>
+                            {activeIndex === index ? <ChevronRight /> : <ChevronDown />}
+                        </summary>
+                        <p className={cn('pt-2', contentClassName)}>{item.content}</p>
+                    </details>
+                    <hr className={cn('my-3 py-2 rounded w-full opacity-30', separatorClassName)} />
+                </>
+            ))}
+        </div>
+    );
+};
+
+export default AccordionComponent;`,
     },
     {
         name: "alert",

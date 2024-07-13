@@ -5,7 +5,7 @@ import { toast } from "@/components/ui/use-toast"
 import { Check, ClipboardIcon } from "lucide-react"
 
 function cleanText(text: string): string {
-    const regex = /import React/;
+    const regex = /import React|"use client/;
     const importReactPosition = text.search(regex);
     if (importReactPosition !== -1) {
         return text.slice(importReactPosition);
