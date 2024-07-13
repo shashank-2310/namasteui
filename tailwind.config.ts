@@ -25,6 +25,7 @@ const config = {
         "black100": "#0c0c0c",
         "white90": "#fafafa",
         "grey": "#abb2bf",
+        "grey50": "#1e1e1e",
         "lemon": "#98c379",
         "red": "#f92672",
         border: "hsl(var(--border))",

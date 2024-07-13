@@ -2,7 +2,10 @@ import React from 'react'
 import { ChevronRight } from 'lucide-react'
 import { ComponentProps } from './ComponentIntro'
 import ClipboardCopyBtn from '../ClipboardCopyBtn'
-import CodeText from './CodeText'
+import { CodeBlock } from './ComponentCode'
+
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
+import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import { ScrollArea } from '@/components/ui/scroll-area'
 
 const ComponentInstallation = ({ componentName }: ComponentProps) => {
@@ -22,7 +25,7 @@ export function cn(...inputs: ClassValue[]) {
                 <h2 className='flex flex-row text-base font-medium lg:text-lg text-muted-foreground'>
                     <ChevronRight /> Install util dependencies
                 </h2>
-                <div className="border bg-black95 dark:bg-background py-4 px-2 sm:p-5 text-sm sm:text-base rounded-lg relative" id='npm'>
+                <div className="border border-muted-foreground/30 bg-grey50 py-4 px-2 sm:p-5 text-sm sm:text-base rounded-lg relative" id='npm'>
                     <ClipboardCopyBtn id='npm' />
                     <p className='flex flex-row font-mono text-grey'>
                         npm&nbsp;
@@ -36,11 +39,18 @@ export function cn(...inputs: ClassValue[]) {
                 <h2 className='flex flex-row font-medium text-base lg:text-lg text-muted-foreground'>
                     <ChevronRight /> Add util file
                 </h2>
-                <p className='ml-4 bg-muted px-3 py-1 w-fit rounded-full'>lib/utils.ts</p>
-                <div className="border bg-black95 dark:bg-background py-4 px-2 sm:p-5 text-sm sm:text-base rounded-lg relative" id='clsx'>
+                <p className='bg-grey50 text-grey px-3 py-1 w-fit rounded-lg'>lib/utils.ts</p>
+                <div className="border border-muted-foreground/30 bg-grey50 py-4 px-2 sm:p-5 text-sm sm:text-base rounded-lg relative" id='clsx'>
                     <ClipboardCopyBtn id='clsx' />
-                    <div className="flex flex-col font-mono text-sm sm:text-base text-white90 break-words whitespace-pre-wrap">
-                        {clsxCode}
+                    <div className="text-sm sm:text-base">
+                        <SyntaxHighlighter
+                            language="tsx"
+                            style={vscDarkPlus}
+                            wrapLines
+                            wrapLongLines
+                        >
+                            {clsxCode}
+                        </SyntaxHighlighter>
                     </div>
                 </div>
             </div>
@@ -48,10 +58,11 @@ export function cn(...inputs: ClassValue[]) {
                 <h2 className='flex flex-row text-base font-medium lg:text-lg text-muted-foreground'>
                     <ChevronRight /> Copy the source code
                 </h2>
-                <div className="border bg-black95 dark:bg-background py-4 px-2 sm:p-5 lg:text-lg rounded-lg relative" id='code2'>
+                <p className='bg-grey50 text-grey px-3 py-1 w-fit rounded-lg'>components/ui/{componentName}.tsx</p>
+                <div className="border border-muted-foreground/30 bg-grey50 py-4 px-2 sm:p-5 sm:text-base text-sm rounded-lg relative">
                     <ClipboardCopyBtn id='code2' />
-                    <ScrollArea className='h-[50dvh] lg:h-[40dvh] text-sm sm:text-base'>
-                        <CodeText componentName={componentName} />
+                    <ScrollArea className="h-[60dvh]" id='code2'>
+                        <CodeBlock componentName={componentName} />
                     </ScrollArea>
                 </div>
             </div>
