@@ -2,35 +2,45 @@ import React from 'react'
 import {
     Table,
     TableBody,
-    TableCaption,
     TableCell,
     TableHead,
     TableHeader,
     TableRow,
 } from "@/components/ui/table"
+import { ComponentProps } from './ComponentIntro'
+import Components from '@/data/ComponentList'
 
 
-const PropsGrid = () => {
+const PropsGrid = ({ componentName }: ComponentProps) => {
     return (
-        <Table>
-            <TableCaption>A list of your recent invoices.</TableCaption>
-            <TableHeader>
-                <TableRow>
-                    <TableHead className="w-[100px]">Invoice</TableHead>
-                    <TableHead>Status</TableHead>
-                    <TableHead>Method</TableHead>
-                    <TableHead className="text-right">Amount</TableHead>
-                </TableRow>
-            </TableHeader>
-            <TableBody>
-                <TableRow>
-                    <TableCell className="font-medium">INV001</TableCell>
-                    <TableCell>Paid</TableCell>
-                    <TableCell>Credit Card</TableCell>
-                    <TableCell className="text-right">$250.00</TableCell>
-                </TableRow>
-            </TableBody>
-        </Table>
+        <div className='flex flex-col gap-3 w-full lg:w-11/12' id='props'>
+            <h1 className='font-semibold text-base sm:text-lg lg:text-xl'>Props</h1>
+            <Table>
+                <TableHeader>
+                    <TableRow>
+                        <TableHead className="border border-foreground/30 text-primary font-medium">Props</TableHead>
+                        <TableHead className='border border-foreground/30 text-primary font-medium'>Type</TableHead>
+                        <TableHead className="border border-foreground/30 text-primary font-medium">Description</TableHead>
+                    </TableRow>
+                </TableHeader>
+                {Components.map((item) => {
+                    if (item.name === componentName) {
+                        return (
+                            <TableBody key={item.name}>
+                                {item.props.map((prop, idx) => (
+                                    <TableRow key={idx}>
+                                        <TableCell className='border border-foreground/30 text-muted-foreground'>{prop}</TableCell>
+                                        <TableCell className='border border-foreground/30 text-muted-foreground'>{item.propTypes[idx]}</TableCell>
+                                        <TableCell className='border border-foreground/30 text-muted-foreground'>{item.propsDesc[idx]}</TableCell>
+                                    </TableRow>
+                                ))}
+                            </TableBody>
+                        );
+                    }
+                    return null;
+                })}
+            </Table>
+        </div>
 
     )
 }

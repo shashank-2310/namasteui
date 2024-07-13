@@ -14,12 +14,12 @@ const page = () => {
                 Introduction
             </p>
             <h1 className='text-base sm:text-lg lg:text-2xl font-semibold'>Introduction</h1>
-            <p className='text-muted-foreground text-sm sm:text-base'>
-                Inspired by the simplicity of Shadcn and the magic of MagicUI.
+            <p className='text-muted-foreground text-sm sm:text-base lg:text-lg'>
+                Inspired by the simplicity of Shadcn UI, we present our own set of ui components.
                 <br />
-                Reusable components. Accessible. Customizable. Open Source.
+                Reusable. Accessible. Customizable. Open Source.
             </p>
-            <div className='text-sm sm:text-base flex flex-col gap-2 mt-3 lg:mt-5 w-full'>
+            <div className='text-sm sm:text-base lg:text-lg flex flex-col gap-2 mt-3 lg:mt-5 w-full'>
                 <p className='flex flex-row gap-2'>
                     <Icons.star className='size-4 sm:size-5 lg:size-6' /> NamasteUI empowers you to cherry-pick the components you need.
                 </p>
@@ -38,7 +38,7 @@ const page = () => {
             <div className="w-full justify-end flex mt-2">
                 <Button variant={"outline"} size={"lg"} className='w-fit text-sm sm:text-base rounded-xl border-foreground hover:bg-foreground hover:text-background'>
                     <Link href={"/docs/installation"} className='flex items-center gap-1'>
-                        Installation <ChevronRight className='size-5'/>
+                        Installation <ChevronRight className='size-5' />
                     </Link>
                 </Button>
             </div>

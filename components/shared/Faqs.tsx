@@ -9,7 +9,7 @@ import {
 
 const Faqs = () => {
     return (
-        <Accordion type="single" collapsible className='text-left text-sm sm:w-11/12 lg:w-3/5'>
+        <Accordion type="single" collapsible className='text-left text-sm sm:text-base sm:w-11/12 lg:w-3/5'>
             <AccordionItem value="item-1">
                 <AccordionTrigger>Why copy/paste and not packaged as a dependency?</AccordionTrigger>
                 <AccordionContent>

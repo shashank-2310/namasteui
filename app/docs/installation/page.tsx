@@ -1,3 +1,4 @@
+import { InstallationBlock } from '@/components/shared/namasteui-component-details/ComponentInstallation'
 import { Button } from '@/components/ui/button'
 import { ChevronRight } from 'lucide-react'
 import Link from 'next/link'
@@ -12,41 +13,24 @@ const page = () => {
                 Installation
             </p>
             <h1 className='text-base sm:text-lg lg:text-2xl font-semibold'>Installation</h1>
-            <p className='text-muted-foreground text-sm sm:text-base'>
-                Follow the below steps to install dependencies and structure your app.
+            <p className='text-muted-foreground text-base lg:text-lg'>
+                Our components use shadcn-ui&apos;s utility styles, so,
+                follow the below steps to install dependencies and structure your app:
             </p>
-            <div className="flex flex-col gap-1 text-sm sm:text-base">
-                <p className='text-muted-foreground'>
-                    1. Refer to shadcn installation&nbsp;
+            <div className="flex flex-col gap-3 text-sm sm:text-base w-full">
+                <span className='flex flex-row text-base lg:text-lg text-muted-foreground break-words whitespace-nowrap'>
+                    <ChevronRight /> Refer to shadcn installation&nbsp;
                     <Link
                         href={"https://ui.shadcn.com/docs/installation"}
                         className='underline hover:text-purple'
                         target='_blank'
-                    >docs.</Link>
-                </p>
-                <p className='text-muted-foreground'>
-                    2. Refer to magicui installation&nbsp;
-                    <Link
-                        href={"https://magicui.design/docs/installation"}
-                        className='underline hover:text-purple'
                         rel='noopener noreferrer'
-                    >docs.</Link>
+                    >docs</Link>
+                </span>
+                <p className='flex flex-row text-base lg:text-lg text-muted-foreground w-full'>
+                    <ChevronRight className='' /> Install shadcn-ui
                 </p>
-            </div>
-            <p className='text-muted-foreground text-sm sm:text-base'>
-                NOTE: If your project is already using the <span className='text-purple'>shadcn-ui</span>, don&apos;t worry! You can still use <span className='text-purple'>magicui</span>.
-            </p>
-            <div className="flex flex-col gap-1">
-                <h1 className='text-sm sm:text-base lg:text-xl font-medium'>Dark Mode</h1>
-                <p className='text-muted-foreground text-sm sm:text-base'>
-                    For dark mode, refer to docs on&nbsp;
-                    <Link
-                        href={"https://ui.shadcn.com/docs/dark-mode"}
-                        className='underline hover:text-purple'
-                        target='_blank'
-                        rel='noopener noreferrer'
-                    >shadcn/dark-mode</Link>.
-                </p>
+                <InstallationBlock headingClassName='hidden' subHeadingClassName='font-normal' />
             </div>
             <div className="w-full justify-end flex mt-2">
                 <Button variant={"outline"} size={"lg"} className='w-fit text-sm sm:text-base rounded-xl border-foreground hover:bg-foreground hover:text-background'>
