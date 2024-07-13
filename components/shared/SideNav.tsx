@@ -2,8 +2,8 @@
 import Link from 'next/link'
 import { usePathname } from 'next/navigation';
 import React from 'react'
-import componentList from '@/app/docs/components/componentList.json'
 import { ScrollArea } from '../ui/scroll-area';
+import Components from '@/data/ComponentList';
 
 const SideNav = () => {
     const pathName = usePathname();
@@ -17,7 +17,7 @@ const SideNav = () => {
             </div>
             <div className="flex flex-col gap-1 mt-4">
                 <span className='text-base lg:text-lg font-semibold text-secondary-foreground'>Components</span>
-                {componentList.components.map((item) => (
+                {Components.map((item) => (
                     <Link
                         key={item.name}
                         href={`/docs/components/${item.link}`}

@@ -1,8 +1,12 @@
 import React from 'react'
 import { ComponentProps } from './ComponentIntro'
 import ClipboardCopyBtn from '../ClipboardCopyBtn'
+import Components from '@/data/ComponentList'
 
 const NodeInstallation = ({ componentName }: ComponentProps) => {
+    const ui: number =  Components.find((component) => component.name === componentName)?.lib || 0;
+    const lib: string = ui === 0 ? "shadcn-ui@latest" : "magicui-cli";
+
     return (
         <div className="flex flex-col gap-2">
             <h1 className='font-medium text-base sm:text-lg lg:text-xl'>Installation</h1>
@@ -14,7 +18,7 @@ const NodeInstallation = ({ componentName }: ComponentProps) => {
                     <div className="w-3 h-3 rounded-full bg-green-500" />
                 </div>
                 <p className='text-sm lg:text-base pt-6 w-full' id='node'>
-                    npx shadcn-ui@latest add {componentName}
+                    npx {lib} add {componentName}
                 </p>
             </div>
         </div>

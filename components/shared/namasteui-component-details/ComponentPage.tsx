@@ -18,7 +18,7 @@ const ComponentPage = () => {
             <div className="flex flex-col gap-2">
                 <h1 className='font-medium text-base sm:text-lg lg:text-xl'>Usage</h1>
                 <p className='text-sm lg:text-base text-muted-foreground'>
-                    Copy and paste the code from above into your application. Alternatively, use the provided CLI command.
+                    Use the CLI command provided above, then copy and paste the code.
                 </p>
             </div>
             <NextPrevBtn componentName={pathName} />

@@ -1,6 +1,6 @@
 import React from 'react'
 import { ChevronRight } from 'lucide-react'
-import componentList from '@/app/docs/components/componentList.json'
+import Components from '@/data/ComponentList'
 
 export type ComponentProps = {
     componentName: string
@@ -20,7 +20,7 @@ const ComponentIntro = ({ componentName }: ComponentProps) => {
                 </h1>
             </div>
             <p className='text-sm sm:text-base lg:text-lg'>
-                {componentList.components.find((item) => item.name === componentName)?.desc || 'Component description not found.'}
+                {Components.find((item) => item.name === componentName)?.desc || 'Component description not found.'}
             </p>
         </div>
     )

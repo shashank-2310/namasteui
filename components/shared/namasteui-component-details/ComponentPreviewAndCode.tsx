@@ -2,7 +2,7 @@ import React from 'react'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import ComponentCode from './ComponentCode'
 import { ComponentProps } from './ComponentIntro'
-import { Components } from './ComponentPreviewAndCodeList'
+import Components from '@/data/ComponentList'
 
 
 const ComponentPreviewAndCode = ({ componentName }: ComponentProps) => {

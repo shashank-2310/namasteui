@@ -4,7 +4,7 @@ import React from 'react'
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import { atomOneDarkReasonable } from 'react-syntax-highlighter/dist/esm/styles/hljs';
 import { ComponentProps } from './ComponentIntro';
-import { Components } from './ComponentPreviewAndCodeList';
+import Components from '@/data/ComponentList';
 
 const CodeText = ({ componentName }: ComponentProps) => {
     const theme = useTheme();

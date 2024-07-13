@@ -1,19 +1,19 @@
 import React from 'react'
 import { Button } from '@/components/ui/button'
 import { ComponentProps } from './ComponentIntro'
-import componentList from "@/app/docs/components/componentList.json"
 import Link from 'next/link'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
+import Components from '@/data/ComponentList'
 
 const NextPrevBtn = ({ componentName }: ComponentProps) => {
 
-    const len = componentList.components.length;
+    const len = Components.length;
 
-    const next = componentList.components.findIndex((item) => item.name === componentName) + 1;
-    const nextComponent = componentList.components[next];
+    const next = Components.findIndex((item) => item.name === componentName) + 1;
+    const nextComponent = Components[next];
 
-    const prev = componentList.components.findIndex((item) => item.name === componentName) - 1;
-    const prevComponent = componentList.components[prev];
+    const prev = Components.findIndex((item) => item.name === componentName) - 1;
+    const prevComponent = Components[prev];
 
     return (
         <div className='flex flex-row justify-between items-center gap-2 text-sm sm:text-base w-full lg:w-11/12'>
