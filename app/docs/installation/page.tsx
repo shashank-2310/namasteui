@@ -33,11 +33,11 @@ const page = () => {
                 <InstallationBlock headingClassName='hidden' subHeadingClassName='font-normal' />
             </div>
             <div className="w-full justify-end flex mt-2">
-                <Button variant={"outline"} size={"lg"} className='w-fit text-sm sm:text-base rounded-xl border-foreground hover:bg-foreground hover:text-background'>
-                    <Link href={"/docs/components/accordion"} className='flex items-center gap-1'>
+                <Link href={"/docs/components/accordion"}>
+                    <Button variant={"outline"} size={"lg"} className='flex items-center gap-1 w-fit text-sm sm:text-base rounded-xl border-foreground hover:bg-foreground hover:text-background'>
                         Browse Components <ChevronRight className='size-5' />
-                    </Link>
-                </Button>
+                    </Button>
+                </Link>
             </div>
         </section>
     )

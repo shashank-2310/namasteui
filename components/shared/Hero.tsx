@@ -26,18 +26,18 @@ const Hero = () => {
                     Welcome to NamasteUI, where simplicity meets sophistication. Explore our curated collection of UI components designed to streamline your development journey. Empower your projects with seamless integration and intuitive customization options. Elevate your web design experience with NamasteUI and bring your vision to life with elegance and ease.
                 </p>
                 <div className='flex flex-col lg:flex-row gap-5 lg:gap-8 mt-1 sm:mt-0'>
-                    <Button size="lg" className='rounded-xl hover:bg-purple'>
-                        <Link href={"/docs/components"} className='flex flex-row gap-1 items-center text-base'>
+                    <Link href={"/docs/components"}>
+                        <Button size="lg" className='rounded-xl w-full hover:bg-purple flex flex-row gap-1 items-center text-base'>
                             Browse Components
                             <ChevronRight />
-                        </Link>
-                    </Button>
-                    <Button size="lg" variant="outline" className='rounded-xl hover:bg-purple'>
-                        <Link href={"/docs"} className='flex flex-row gap-1 items-center text-base'>
+                        </Button>
+                    </Link>
+                    <Link href={"/docs"}>
+                        <Button size="lg" variant="outline" className='rounded-xl w-full hover:bg-purple flex flex-row gap-1 items-center text-base'>
                             Get Started
                             <ChevronRight />
-                        </Link>
-                    </Button>
+                        </Button>
+                    </Link>
                 </div>
                 <div className="flex flex-row my-1 sm:my-2 lg:my-4 gap-8 sm:gap-10 w-full justify-center sm:justify-start">
                     <Icons.nextjs className="size-9" />

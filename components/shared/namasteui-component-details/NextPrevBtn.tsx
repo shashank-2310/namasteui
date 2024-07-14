@@ -18,33 +18,29 @@ const NextPrevBtn = ({ componentName }: ComponentProps) => {
     return (
         <div className='flex flex-row justify-between items-center gap-2 text-sm sm:text-base w-full lg:w-11/12'>
             {prev >= 0 &&
-                <Button
-                    variant={"outline"}
-                    size={"lg"}
-                    className='w-fit mr-auto text-sm sm:text-base rounded-xl border-foreground hover:bg-foreground hover:text-background p-2 sm:p-4 lg:p-6'
-                >
-                    <Link
-                        href={`/docs/components/${prevComponent.link}`}
-                        className='flex flex-row gap-2 items-center capitalize'
+                <Link href={`/docs/components/${prevComponent.link}`} className='mr-auto'>
+                    <Button
+                        variant={"outline"}
+                        size={"lg"}
+                        className='w-fit text-sm sm:text-base rounded-xl border-foreground hover:bg-foreground hover:text-background p-2 sm:p-4 lg:p-6 flex flex-row gap-2 items-center capitalize'
                     >
+
                         <ChevronLeft className='size-4 sm:size-5' />
                         {prevComponent.name}
-                    </Link>
-                </Button>}
+                    </Button>
+                </Link>}
             {next < len && next > -1 &&
-                <Button
-                    variant={"outline"}
-                    size={"lg"}
-                    className='w-fit ml-auto text-sm sm:text-base rounded-xl border-foreground hover:bg-foreground hover:text-background p-2 sm:p-4 lg:p-6'
-                >
-                    <Link
-                        href={`/docs/components/${nextComponent.link}`}
-                        className='flex flex-row gap-2 items-center capitalize'
+                <Link href={`/docs/components/${nextComponent.link}`} className='ml-auto'>
+                    <Button
+                        variant={"outline"}
+                        size={"lg"}
+                        className='w-fit text-sm sm:text-base rounded-xl border-foreground hover:bg-foreground hover:text-background p-2 sm:p-4 lg:p-6 flex flex-row gap-2 items-center capitalize'
                     >
+
                         {nextComponent.name}
                         <ChevronRight className='size-4 sm:size-5' />
-                    </Link>
-                </Button>}
+                    </Button>
+                </Link>}
         </div>
     )
 }
