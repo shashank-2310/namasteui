@@ -8,18 +8,18 @@ import React from 'react'
 const page = () => {
     return (
         <section className='flex flex-col gap-3 lg:gap-8 w-full py-2 px-4 sm:p-7 lg:p-12'>
-            <p className='flex flex-row gap-1 sm:gap-2 items-center text-xs sm:text-sm'>
+            <p className='flex flex-row gap-1 sm:gap-2 items-center text-sm'>
                 <span className='text-muted-foreground'>Docs</span>
                 <ChevronRight className='size-4' />
                 Introduction
             </p>
-            <h1 className='text-base sm:text-lg lg:text-2xl font-semibold'>Introduction</h1>
-            <p className='text-muted-foreground text-sm sm:text-base lg:text-lg'>
+            <h1 className='text-lg lg:text-2xl font-semibold'>Introduction</h1>
+            <p className='text-muted-foreground text-base'>
                 Inspired by the simplicity of Shadcn UI, we present our own set of ui components.
                 <br />
                 Reusable. Accessible. Customizable. Open Source.
             </p>
-            <div className='text-sm sm:text-base lg:text-lg flex flex-col gap-2 mt-3 lg:mt-5 w-full'>
+            <div className='text-base flex flex-col gap-2 mt-3 lg:mt-5 w-full'>
                 <p className='flex flex-row gap-2'>
                     <Icons.star className='size-4 sm:size-5 lg:size-6' /> NamasteUI empowers you to cherry-pick the components you need.
                 </p>
@@ -31,7 +31,7 @@ const page = () => {
                 </p>
             </div>
             <div className="flex flex-col gap-2 mt-3">
-                <h1 className='text-sm sm:text-base lg:text-xl font-medium'>FAQ</h1>
+                <h1 className='text-xl font-medium'>FAQ</h1>
                 <hr className='sm:w-11/12 lg:w-3/5' />
                 <Faqs />
             </div>

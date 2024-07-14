@@ -46,8 +46,15 @@ const Hero = () => {
                     <Icons.typescript className="size-9" />
                 </div>
             </div>
-            <div className="w-full sm:fit lg:w-full lg:flex lg:justify-end sm:mt-8 lg:mt-1">
-                <Image src="/hero.gif" alt='hero' height={500} width={500} priority unoptimized className='aspect-square' />
+            <div className="w-full lg:flex lg:justify-end sm:mt-8 lg:mt-1">
+                <Image
+                    src="/hero.gif"
+                    alt='hero'
+                    height={500}
+                    width={500}
+                    priority
+                    loading='eager'
+                    className='object-contain aspect-square' />
             </div>
         </section>
     )

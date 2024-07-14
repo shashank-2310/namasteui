@@ -8,7 +8,7 @@ import Components from '@/data/ComponentList'
 const ComponentPreviewAndCode = ({ componentName }: ComponentProps) => {
 
     return (
-        <Tabs defaultValue="preview" className="w-full lg:w-3/4 text-sm sm:text-base">
+        <Tabs defaultValue="preview" className="w-full lg:w-3/4 text-sm">
             <TabsList>
                 <TabsTrigger value="preview">Preview</TabsTrigger>
                 <TabsTrigger value="code">Code</TabsTrigger>

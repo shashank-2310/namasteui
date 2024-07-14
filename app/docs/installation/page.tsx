@@ -7,18 +7,18 @@ import React from 'react'
 const page = () => {
     return (
         <section className='flex flex-col gap-3 lg:gap-8 w-full py-2 px-4 sm:p-7 lg:p-12'>
-            <p className='flex flex-row gap-1 sm:gap-2 items-center text-xs sm:text-sm'>
+            <p className='flex flex-row gap-1 sm:gap-2 items-center text-sm'>
                 <span className='text-muted-foreground'>Docs</span>
                 <ChevronRight className='size-4' />
                 Installation
             </p>
-            <h1 className='text-base sm:text-lg lg:text-2xl font-semibold'>Installation</h1>
-            <p className='text-muted-foreground text-base lg:text-lg'>
+            <h1 className='text-lg lg:text-2xl font-semibold'>Installation</h1>
+            <p className='text-muted-foreground text-base'>
                 Our components use shadcn-ui&apos;s utility styles, so,
                 follow the below steps to install dependencies and structure your app:
             </p>
             <div className="flex flex-col gap-3 text-sm sm:text-base w-full">
-                <span className='flex flex-row text-base lg:text-lg text-muted-foreground break-words whitespace-nowrap'>
+                <span className='flex flex-row text-base text-muted-foreground break-words whitespace-nowrap'>
                     <ChevronRight /> Refer to shadcn installation&nbsp;
                     <Link
                         href={"https://ui.shadcn.com/docs/installation"}
@@ -27,7 +27,7 @@ const page = () => {
                         rel='noopener noreferrer'
                     >docs</Link>
                 </span>
-                <p className='flex flex-row text-base lg:text-lg text-muted-foreground w-full'>
+                <p className='flex flex-row text-base text-muted-foreground w-full'>
                     <ChevronRight className='' /> Install shadcn-ui
                 </p>
                 <InstallationBlock headingClassName='hidden' subHeadingClassName='font-normal' />

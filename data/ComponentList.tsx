@@ -1,7 +1,7 @@
 import React from 'react';
 
 import AccordionComponent from '@/data/ui-library/AccordionComponent';
-import AlertComponent from '@/data/ui-library/AlertComponent';
+import AvatarComponent from '@/data/ui-library/AvatarComponent';
 import ButtonComponent from '@/data/ui-library/ButtonComponent';
 import CardComponent from '@/data/ui-library/CardComponent';
 import CarouselComponent from '@/data/ui-library/CarouselComponent';
@@ -112,31 +112,45 @@ const AccordionComponent: React.FC<AccordionProps> = ({
 export default AccordionComponent;`,
     },
     {
-        name: "alert",
-        desc: "Displays a message to the user, often to convey important information or a status update.",
-        link: "alert",
-        preview: <AlertComponent />,
-        props: [],
-        propsDesc: [],
-        propTypes: [],
-        code: `import React from 'react'
-import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
-import { Terminal } from 'lucide-react'
+        name: "avatar",
+        desc: "An image element with a fallback for representing the user.",
+        link: "avatar",
+        preview: <AvatarComponent />,
+        props: ['url', 'className', 'imageClassName'],
+        propsDesc: ['The URL of the image to display.', 'Additional class name(s) for the outer container.', 'Additional class name(s) for the image.'],
+        propTypes: ['string | staticImport', 'string', 'string'],
+        code: `import React from "react"
+import Image from "next/image";
+import { cn } from "@/lib/utils";
+import { StaticImport } from "next/dist/shared/lib/get-img-props";
 
-const AlertComponent = () => {
+type AvatarProps = {
+    url?: string | StaticImport;
+    className?: string;
+    imageClassName?: string;
+}
+
+const AvatarComponent = ({
+    url = "https://avatars.githubusercontent.com/u/124599?v=4",
+    className,
+    imageClassName,
+
+}: AvatarProps) => {
+
     return (
-        <Alert>         {/* you can also use variant="destructive" */}
-            <Terminal className="h-4 w-4" />
-            <AlertTitle>Heads up!</AlertTitle>
-            <AlertDescription>
-                You can add components and dependencies to your app using the cli.
-            </AlertDescription>
-        </Alert>
-
+        <div className={cn("relative flex h-10 w-10 shrink-0 overflow-hidden rounded-full", className)}>
+            <Image
+                src={url}
+                alt="Avatar"
+                fill
+                className={cn("aspect-square h-full w-full", imageClassName)}
+            />
+        </div>
     )
 }
 
-export default AlertComponent`
+export default AvatarComponent;
+`
     },
     {
         name: "button",

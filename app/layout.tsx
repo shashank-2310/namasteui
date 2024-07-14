@@ -7,6 +7,7 @@ import { Toaster } from "@/components/ui/toaster"
 
 import { Poppins } from "next/font/google";
 import Footer from "@/components/shared/Footer";
+import Head from "next/head";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -27,6 +28,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <Head>
+        <link
+          rel="preload"
+          href={"/hero.gif"}
+          as="image"
+        />
+      </Head>
       <body className={poppins.className}>
         <ThemeProvider
           attribute="class"
