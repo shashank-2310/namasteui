@@ -16,16 +16,15 @@ const NextPrevBtn = ({ componentName }: ComponentProps) => {
     const prevComponent = Components[prev];
 
     return (
-        <div className='flex flex-row justify-between items-center gap-2 text-sm sm:text-base w-full lg:w-11/12'>
+        <div className='flex flex-row justify-between items-center gap-2 w-full lg:w-11/12'>
             {prev >= 0 &&
                 <Link href={`/docs/components/${prevComponent.link}`} className='mr-auto'>
                     <Button
                         variant={"outline"}
-                        size={"lg"}
-                        className='w-fit text-sm sm:text-base rounded-xl border-foreground hover:bg-foreground hover:text-background p-2 sm:p-4 lg:p-6 flex flex-row gap-2 items-center capitalize'
+                        className='text-xs lg:text-sm rounded-xl border-foreground/30 hover:bg-foreground hover:text-background flex flex-row gap-1 sm:gap-2 items-center capitalize'
                     >
 
-                        <ChevronLeft className='size-4 sm:size-5' />
+                        <ChevronLeft className='size-3 sm:size-5' />
                         {prevComponent.name}
                     </Button>
                 </Link>}
@@ -33,12 +32,11 @@ const NextPrevBtn = ({ componentName }: ComponentProps) => {
                 <Link href={`/docs/components/${nextComponent.link}`} className='ml-auto'>
                     <Button
                         variant={"outline"}
-                        size={"lg"}
-                        className='w-fit text-sm sm:text-base rounded-xl border-foreground hover:bg-foreground hover:text-background p-2 sm:p-4 lg:p-6 flex flex-row gap-2 items-center capitalize'
+                        className='text-xs lg:text-sm rounded-xl border-foreground/30 hover:bg-foreground hover:text-background flex flex-row gap-1 sm:gap-2 items-center capitalize'
                     >
 
                         {nextComponent.name}
-                        <ChevronRight className='size-4 sm:size-5' />
+                        <ChevronRight className='size-3 sm:size-5' />
                     </Button>
                 </Link>}
         </div>

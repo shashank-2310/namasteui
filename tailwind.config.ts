@@ -28,7 +28,8 @@ const config = {
         "grey": "#abb2bf",
         "grey50": "#1e1e1e",
         "lemon": "#98c379",
-        "red": "#f92672",
+        "red-0": "#f92672",
+        "red-1": "#f31260",
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
@@ -93,7 +94,10 @@ const config = {
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [
+    require("tailwindcss-animate"),
+    require("@tailwindcss/forms")
+  ],
 } satisfies Config
 
 export default config

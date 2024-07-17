@@ -4,7 +4,7 @@ import { cn } from '@/lib/utils'
 import { User2Icon } from 'lucide-react'
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: 'default' | 'destructive' | 'outline' | 'secondary' | 'ghost' | 'link'
+  variant?: 'default' | 'destructive' | 'outline' | 'secondary' | 'ghost' | 'link' | 'success' | 'warning' | 'primary',
   size?: 'default' | 'sm' | 'lg' | 'icon'
   className?: string,
 }
@@ -15,8 +15,11 @@ const buttonVariants = cva(
     variants: {
       variant: {
         default: "bg-primary text-primary-foreground hover:bg-primary/90",
+        primary: "bg-blue-500 hover:bg-blue-600 text-white",
+        success: "bg-green-500 text-black hover:bg-green-600/90",
+        warning: "bg-amber-500 text-black hover:bg-amber-600/90",
         destructive:
-          "bg-destructive text-destructive-foreground hover:bg-destructive/90",
+          "bg-[#f31260] text-white hover:bg-[#f31260]/90",
         outline:
           "border border-input bg-background hover:bg-accent hover:text-accent-foreground",
         secondary:
@@ -52,11 +55,14 @@ const Button = ({
 
 export const ButtonsShowCase = () => {
   return (
-    <div className="flex flex-col flex-wrap gap-10 sm:gap-16 w-full">
-      <div className="flex flex-row flex-wrap gap-4 sm:gap-8 w-full">
+    <div className="flex flex-col flex-wrap gap-6 sm:gap-12 w-full">
+      <div className="flex flex-row flex-wrap gap-2 sm:gap-7 w-full">
         <Button>Default</Button>
+        <Button variant='primary'>Primary</Button>
         <Button variant='secondary'>Secondary</Button>
         <Button variant='destructive'>Destructive</Button>
+        <Button variant='success'>Success</Button>
+        <Button variant='warning'>Warning</Button>
         <Button variant='ghost'>Ghost</Button>
         <Button variant='link'>Link</Button>
         <Button variant='outline'>Outline</Button>

@@ -14,7 +14,7 @@ const ComponentPreviewAndCode = ({ componentName }: ComponentProps) => {
                 <TabsTrigger value="code">Code</TabsTrigger>
             </TabsList>
             <TabsContent value="preview">
-                <div className="border border-muted-foreground/30 rounded-lg px-10 sm:px-20 lg:px-28 w-full lg:w-4/5 flex items-center justify-center min-h-96">
+                <div className="border border-muted-foreground/30 rounded-lg px-8 sm:px-20 lg:px-28 w-full lg:w-4/5 flex items-center justify-center min-h-96">
                     {Components.find((item) => item.name === componentName)?.preview || "There's some error. Please try again later."}
                 </div>
             </TabsContent>
