@@ -3,16 +3,17 @@ import Image from "next/image";
 import { cn } from "@/lib/utils";
 import { StaticImport } from "next/dist/shared/lib/get-img-props";
 
-type AvatarProps = {
+interface AvatarProps extends React.HTMLAttributes<HTMLImageElement> {
     url?: string | StaticImport;
     className?: string;
     imageClassName?: string;
 }
 
-const AvatarComponent = ({
+const Avatar = ({
     url = "https://avatars.githubusercontent.com/u/124599?v=4",
     className,
     imageClassName,
+    ...props
 
 }: AvatarProps) => {
 
@@ -21,11 +22,13 @@ const AvatarComponent = ({
             <Image
                 src={url}
                 alt="Avatar"
-                fill
+                width={60}
+                height={60}
                 className={cn("aspect-square h-full w-full", imageClassName)}
+                {...props}
             />
         </div>
     )
 }
 
-export default AvatarComponent;
+export default Avatar;

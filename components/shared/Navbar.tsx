@@ -12,7 +12,7 @@ const Navbar = () => {
     const pathName = usePathname();
 
     return (
-        <section className='bg-background relative z-10 text-black dark:border-none border-b border-purple dark:text-white p-3 lg:p-4 flex flex-row justify-between items-center w-full'>
+        <section className='bg-background/50 backdrop-blur sticky top-0 z-10 p-3 lg:p-4 flex flex-row justify-between items-center w-full'>
             <div className="sm:hidden flex items-center">
                 <MobileNav />
             </div>

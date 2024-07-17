@@ -19,7 +19,7 @@ const MobileNav = () => {
             <SheetTrigger>
                 <Icons.nav className='size-6' />
             </SheetTrigger>
-            <SheetContent side="left" className='bg-background'>
+            <SheetContent side="left" className='bg-background dark:bg-background/40 dark:backdrop-blur'>
                 <SheetHeader>
                     <SheetTitle>
                         <Link href={"/"} className="flex flex-row mb-3 gap-2 items-center w-full">

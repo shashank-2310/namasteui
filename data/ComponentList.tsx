@@ -1,9 +1,9 @@
 import React from 'react';
 
-import AccordionComponent from '@/data/ui-library/AccordionComponent';
-import AvatarComponent from '@/data/ui-library/AvatarComponent';
-import ButtonComponent from '@/data/ui-library/ButtonComponent';
-import CardComponent from '@/data/ui-library/CardComponent';
+import Accordion from '@/data/ui-library/accordion';
+import Avatar from './ui-library/avatar';
+import { ButtonsShowCase } from '@/data/ui-library/button';
+import { CardDemo } from '@/data/ui-library/card';
 import CarouselComponent from '@/data/ui-library/CarouselComponent';
 import DialogComponent from '@/data/ui-library/DialogComponent';
 import DropdownMenuComponent from '@/data/ui-library/DropdownMenuComponent';
@@ -51,7 +51,7 @@ const Components: ComponentType[] = [
         name: "accordion",
         desc: "Vertically stacked panels that can be expanded or collapsed to show/hide content.",
         link: "accordion",
-        preview: <AccordionComponent items={items} />,
+        preview: <Accordion items={items} />,
         props: ['items (required)', 'outerContainerClassName', 'innerContainerClassName', 'titleClassName', 'contentClassName', 'separatorClassName'],
         propsDesc: ['An array of objects containing the title and content of each accordion item.', 'Additional class name(s) for the outer container.', 'Additional class name(s) for the inner container.', 'Additional class name(s) for the title.', 'Additional class name(s) for the content.', 'Additional class name(s) for the separator.'],
         propTypes: ['Array<{ title: string; content: string; }>', 'string', 'string', 'string', 'string', 'string'],
@@ -70,7 +70,7 @@ type AccordionProps = {
     separatorClassName?: string;
 };
 
-const AccordionComponent: React.FC<AccordionProps> = ({
+const Accordion: React.FC<AccordionProps> = ({
     items,
     outerContainerClassName,
     innerContainerClassName,
@@ -109,13 +109,13 @@ const AccordionComponent: React.FC<AccordionProps> = ({
     );
 };
 
-export default AccordionComponent;`,
+export default Accordion;`,
     },
     {
         name: "avatar",
         desc: "An image element with a fallback for representing the user.",
         link: "avatar",
-        preview: <AvatarComponent />,
+        preview: <Avatar />,
         props: ['url', 'className', 'imageClassName'],
         propsDesc: ['The URL of the image to display.', 'Additional class name(s) for the outer container.', 'Additional class name(s) for the image.'],
         propTypes: ['string | staticImport', 'string', 'string'],
@@ -124,16 +124,17 @@ import Image from "next/image";
 import { cn } from "@/lib/utils";
 import { StaticImport } from "next/dist/shared/lib/get-img-props";
 
-type AvatarProps = {
+interface AvatarProps extends React.HTMLAttributes<HTMLImageElement> {
     url?: string | StaticImport;
     className?: string;
     imageClassName?: string;
 }
 
-const AvatarComponent = ({
+const Avatar = ({
     url = "https://avatars.githubusercontent.com/u/124599?v=4",
     className,
     imageClassName,
+    ...props
 
 }: AvatarProps) => {
 
@@ -142,35 +143,167 @@ const AvatarComponent = ({
             <Image
                 src={url}
                 alt="Avatar"
-                fill
+                width={60}
+                height={60}
                 className={cn("aspect-square h-full w-full", imageClassName)}
+                {...props}
             />
         </div>
     )
 }
 
-export default AvatarComponent;
-`
+export default Avatar;`
     },
     {
         name: "button",
         desc: "Allows the user to trigger an action or event by clicking or tapping on it.",
         link: "button",
-        preview: <ButtonComponent />,
-        props: [],
-        propsDesc: [],
-        propTypes: [],
-        code: ``
+        preview: <ButtonsShowCase />,
+        props: ['variant', 'size', 'className'],
+        propsDesc: ['The visual style of the button.', 'The size of the button.', 'Additional class name(s) for the button.'],
+        propTypes: ['default | destructive | outline | secondary | ghost | link', 'default | sm | lg | icon', 'string'],
+        code: `import React from 'react'
+import { cva } from 'class-variance-authority'
+import { cn } from '@/lib/utils'
+import { User2Icon } from 'lucide-react'
+
+interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+  variant?: 'default' | 'destructive' | 'outline' | 'secondary' | 'ghost' | 'link'
+  size?: 'default' | 'sm' | 'lg' | 'icon'
+  className?: string,
+}
+
+const buttonVariants = cva(
+  "inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50",
+  {
+    variants: {
+      variant: {
+        default: "bg-primary text-primary-foreground hover:bg-primary/90",
+        destructive:
+          "bg-destructive text-destructive-foreground hover:bg-destructive/90",
+        outline:
+          "border border-input bg-background hover:bg-accent hover:text-accent-foreground",
+        secondary:
+          "bg-secondary text-secondary-foreground hover:bg-secondary/80",
+        ghost: "hover:bg-accent hover:text-accent-foreground",
+        link: "text-primary underline-offset-4 hover:underline",
+      },
+      size: {
+        default: "h-10 px-4 py-2",
+        sm: "h-9 rounded-md px-3",
+        lg: "h-11 rounded-md px-8",
+        icon: "size-8",
+      },
+    },
+    defaultVariants: {
+      variant: "default",
+      size: "default",
+    },
+  }
+)
+
+const Button = ({
+  variant,
+  size,
+  className,
+  ...props
+}: ButtonProps) => {
+  return (
+    <button {...props} className={cn(buttonVariants({ variant, size, className }))} />
+  )
+}
+
+export default Button`
     },
     {
         name: "card",
         desc: "A container that displays content and related actions in a structured, visually appealing way.",
         link: "card",
-        preview: <CardComponent />,
-        props: [],
-        propsDesc: [],
-        propTypes: [],
-        code: ``
+        preview: <CardDemo />,
+        props: ['className'],
+        propsDesc: ['Additional class name(s) for all the card components.'],
+        propTypes: ['string'],
+        code: `import React from 'react'
+import Button from './button'
+import Image from 'next/image'
+import { cn } from '@/lib/utils'
+
+interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
+  children: React.ReactNode,
+  className?: string
+}
+
+export const Card = ({ children, className, ...props }: CardProps) => {
+  return (
+    <div {...props} className={cn('relative flex w-72 sm:w-80 flex-col rounded-xl bg-card-foreground bg-clip-border text-muted shadow-md', className)}>
+      {children}
+    </div>
+  )
+}
+export const CardImage = ({ children, className, ...props }: CardProps) => {
+  return (
+    <div {...props} className={cn('relative mx-4 -mt-6 h-40 overflow-hidden rounded-xl bg-blue-gray-500 bg-clip-border shadow-lg dark:shadow-muted/60 shadow-black', className)}>
+      {children}
+    </div>
+  )
+}
+export const CardBody = ({ children, className, ...props }: CardProps) => {
+  return (
+    <div {...props} className={cn('p-6', className)}>
+      {children}
+    </div>
+  )
+}
+export const CardHeading = ({ children, className, ...props }: CardProps) => {
+  return (
+    <h1 {...props} className={cn('mb-2 block font-sans text-xl font-semibold leading-snug tracking-normal text-blue-gray-900 antialiased', className)}>
+      {children}
+    </h1>
+  )
+}
+export const CardDescription = ({ children, className, ...props }: CardProps) => {
+  return (
+    <p {...props} className={cn('block font-sans text-base font-light leading-relaxed text-inherit antialiased', className)}>
+      {children}
+    </p>
+  )
+}
+export const CardFooter = ({ children, className, ...props }: CardProps) => {
+  return (
+    <div {...props} className={cn('p-6 pt-0', className)}>
+      {children}
+    </div>
+  )
+}
+
+/*  You can use the below code as boilerplate for your own card, otherwise it is absolutely unrequired */
+/*  Card Image is optional */
+export const CardDemo = () => {
+  return (
+    <Card className='mb-10 mt-16'>
+      <CardImage>
+        <Image
+          src={'/cardImage.jpeg'}
+          alt='card-image'
+          fill
+        />
+      </CardImage>
+      <CardBody>
+        <CardHeading>
+          Namaste Radio
+        </CardHeading>
+        <CardDescription>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc felis ligula.
+        </CardDescription>
+      </CardBody>
+      <CardFooter>
+        <Button variant='secondary' className='rounded-xl'>
+          Read More
+        </Button>
+      </CardFooter>
+    </Card>
+  )
+}`
     },
     {
         name: "carousel",

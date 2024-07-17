@@ -14,7 +14,7 @@ export default function ComponentCode({ componentName }: ComponentProps) {
         <div className="flex justify-between bg-grey50 items-center px-6 pt-2 pb-4 border border-muted-foreground/30 rounded-lg w-full relative">
             <ClipboardCopyBtn id="code" />
             <div className="py-2">
-                <ScrollArea className="h-[50dvh] lg:h-[40dvh] text-base" id="code">
+                <ScrollArea className="h-[50dvh] text-base" id="code">
                     <CodeBlock componentName={componentName} />
                 </ScrollArea>
             </div>
@@ -22,8 +22,8 @@ export default function ComponentCode({ componentName }: ComponentProps) {
     )
 }
 
-export function CodeBlock({ componentName }: ComponentProps) {
-    
+export const CodeBlock = ({ componentName }: ComponentProps) => {
+
     const codeString = Components.find((item) => item.name === componentName)?.code || "There's some error. Please try again later.";
 
     return (

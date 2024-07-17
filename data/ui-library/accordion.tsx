@@ -13,14 +13,14 @@ type AccordionProps = {
     separatorClassName?: string;
 };
 
-const AccordionComponent: React.FC<AccordionProps> = ({
+const Accordion = ({
     items,
     outerContainerClassName,
     innerContainerClassName,
     titleClassName,
     contentClassName,
     separatorClassName
-}) => {
+} : AccordionProps) => {
     const [activeIndex, setActiveIndex] = useState<number | null>(null);
 
     const toggleAccordion = (index: number) => {
@@ -45,11 +45,11 @@ const AccordionComponent: React.FC<AccordionProps> = ({
                         </summary>
                         <p className={cn('pt-2', contentClassName)}>{item.content}</p>
                     </details>
-                    <hr className={cn('my-3 py-2 rounded w-full opacity-30', separatorClassName)} />
+                    <hr className={cn('my-3 rounded w-full opacity-90', separatorClassName)} />
                 </div>
             ))}
         </div>
     );
 };
 
-export default AccordionComponent;
+export default Accordion;

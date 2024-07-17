@@ -18,13 +18,26 @@ const ComponentInstallation = ({ componentName }: ComponentProps) => {
                 <h2 className='flex flex-row text-base text-muted-foreground'>
                     <ChevronRight /> Copy the source code
                 </h2>
-                <p className='bg-grey50 text-grey px-3 py-1 w-fit text-xs sm:text-sm rounded-lg'>components/ui/<span className='capitalize'>{componentName}Component</span>.tsx</p>
+                <p className='bg-grey50 text-grey px-3 py-1 w-fit text-xs sm:text-sm rounded-lg'>components/ui/{componentName}.tsx</p>
                 <div className="border border-muted-foreground/30 bg-grey50 py-4 px-2 sm:p-5 sm:text-base text-sm rounded-lg relative">
                     <ClipboardCopyBtn id='code2' />
                     <ScrollArea className="h-[60dvh]" id='code2'>
                         <CodeBlock componentName={componentName} />
                     </ScrollArea>
                 </div>
+            </div>
+            <div className="flex flex-col gap-3" id='sourcecode'>
+                <h2 className='flex flex-row text-base text-muted-foreground'>
+                    <ChevronRight /> Import the component in your project
+                </h2>
+                <p className='bg-grey50 text-grey px-3 py-1 w-fit text-xs sm:text-sm rounded-lg'>
+                    import&nbsp;
+                    <span className='capitalize'>{componentName}&nbsp;</span>
+                    <br className='sm:hidden' />
+                    from&nbsp;
+                    {`"path/to/${componentName}";`}
+                </p>
+                <p className='text-grey text-xs sm:text-sm'>Now you can directy use it with the help of the props given below.</p>
             </div>
         </div>
     )
@@ -46,7 +59,7 @@ export function cn(...inputs: ClassValue[]) {
                 <h2 className={cn('flex flex-row text-base text-muted-foreground', subHeadingClassName)}>
                     <ChevronRight /> Install util dependencies
                 </h2>
-                <div className="border border-muted-foreground/30 bg-grey50 py-4 px-2 sm:p-5 text-sm sm:text-base rounded-lg relative" id='npm'>
+                <div className="border border-muted-foreground/30 bg-grey50 py-4 px-2 sm:p-5 text-sm rounded-lg relative" id='npm'>
                     <ClipboardCopyBtn id='npm' />
                     <p className='flex flex-row font-mono text-grey'>
                         npm&nbsp;
