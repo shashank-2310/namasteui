@@ -55,8 +55,8 @@ const Button = ({
 
 export const ButtonsShowCase = () => {
   return (
-    <div className="flex flex-col flex-wrap gap-6 sm:gap-12 w-full">
-      <div className="flex flex-row flex-wrap gap-2 sm:gap-7 w-full">
+    <div className="flex flex-col flex-wrap gap-6 w-full">
+      <div className="flex flex-row flex-wrap gap-2 w-full">
         <Button>Default</Button>
         <Button variant='primary'>Primary</Button>
         <Button variant='secondary'>Secondary</Button>
@@ -67,7 +67,7 @@ export const ButtonsShowCase = () => {
         <Button variant='link'>Link</Button>
         <Button variant='outline'>Outline</Button>
       </div>
-      <div className="flex flex-row flex-wrap gap-4 sm:gap-8 w-full">
+      <div className="flex flex-row flex-wrap gap-4 w-full">
         <Button size='icon'><User2Icon /></Button>
         <Button size='sm'>Small</Button>
         <Button size='lg'>Large</Button>
