@@ -4,25 +4,25 @@ import Button from './button';
 import { X } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
-type ModalProps = {
+type DialogProps = {
   isOpen: boolean;
   onClose: () => void;
   children: React.ReactNode;
-  outSideModalClassName?: string;
-  modalContainerClassName?: string;
+  outSideDialogClassName?: string;
+  dialogContainerClassName?: string;
   closeButtonClassName?: string;
-  modalContentClassName?: string;
+  dialogContentClassName?: string;
 }
 
 const Dialog = ({
   isOpen,
   onClose,
   children,
-  outSideModalClassName,
-  modalContainerClassName,
+  outSideDialogClassName,
+  dialogContainerClassName,
   closeButtonClassName,
-  modalContentClassName,
-}: ModalProps) => {
+  dialogContentClassName,
+}: DialogProps) => {
 
   useEffect(() => {
     const handleEscape = (event: KeyboardEvent) => {
@@ -50,8 +50,8 @@ const Dialog = ({
   if (!isOpen) return null;
 
   return (
-    <div onClick={handleOverlayClick} className={cn("fixed inset-0 z-50 flex items-center justify-center backdrop-filter backdrop-blur-sm bg-opacity-40", outSideModalClassName)}>
-      <div className={cn("bg-background border border-foreground/30 p-4 sm:p-6 rounded-lg shadow-lg max-w-md w-3/4 sm:w-full", modalContainerClassName)}>
+    <div onClick={handleOverlayClick} className={cn("fixed inset-0 z-50 flex items-center justify-center backdrop-filter backdrop-blur-sm bg-opacity-40", outSideDialogClassName)}>
+      <div className={cn("bg-background border border-foreground/30 p-4 sm:p-6 rounded-lg shadow-lg max-w-md w-3/4 sm:w-full", dialogContainerClassName)}>
         <div className="flex justify-end">
           <Button
             variant='link'
@@ -62,7 +62,7 @@ const Dialog = ({
             <X className='size-5' />
           </Button>
         </div>
-        <div className={cn("mt-2 text-muted-foreground", modalContentClassName)}>{children}</div>
+        <div className={cn("mt-2 text-muted-foreground", dialogContentClassName)}>{children}</div>
       </div>
     </div>
   )
@@ -71,17 +71,17 @@ const Dialog = ({
 /*  You can use the below code as boilerplate for your own card, otherwise it is absolutely unrequired */
 export const DialogDemo = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const openModal = () => setIsOpen(true);
-  const closeModal = () => setIsOpen(false);
+  const openDialog = () => setIsOpen(true);
+  const closeDialog = () => setIsOpen(false);
 
   return (
     <div className="flex justify-center items-center">
-      <Button onClick={openModal}>
-        Open Modal
+      <Button onClick={openDialog}>
+        Open Dialog
       </Button>
-      <Dialog isOpen={isOpen} onClose={closeModal}>
-        <h2 className="text-lg text-primary font-semibold mb-4 ">Modal Content</h2>
-        <p>This is the content of the modal.</p>
+      <Dialog isOpen={isOpen} onClose={closeDialog}>
+        <h2 className="text-lg text-primary font-semibold mb-4 ">Dialog Content</h2>
+        <p>This is the content of the Dialog.</p>
       </Dialog>
     </div>
   )
