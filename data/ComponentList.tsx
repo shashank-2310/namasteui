@@ -7,7 +7,7 @@ import { CardDemo } from './ui-library/card';
 import CheckBox from './ui-library/checkbox';
 import { ChipShowcase } from './ui-library/chip';
 import { DialogDemo } from './ui-library/dialog';
-import DropdownMenu from './ui-library/dropdownmenu';
+import { DropdownMenuDemo } from './ui-library/dropdownmenu';
 import FormComponent from './ui-library/FormComponent';
 import InputComponent from './ui-library/InputComponent';
 import LabelComponent from './ui-library/LabelComponent';
@@ -229,47 +229,42 @@ import Button from './button'
 import Image from 'next/image'
 import { cn } from '@/lib/utils'
 
-interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
-  children: React.ReactNode,
-  className?: string
-}
-
-export const Card = ({ children, className, ...props }: CardProps) => {
+export const Card = ({ children, className, ...props }: React.HTMLAttributes<HTMLDivElement>) => {
   return (
     <div {...props} className={cn('relative flex w-72 sm:w-80 flex-col rounded-xl bg-card-foreground bg-clip-border text-muted shadow-md', className)}>
       {children}
     </div>
   )
 }
-export const CardImage = ({ children, className, ...props }: CardProps) => {
+export const CardImage = ({ children, className, ...props }: React.HTMLAttributes<HTMLDivElement>) => {
   return (
     <div {...props} className={cn('relative mx-4 -mt-6 h-40 overflow-hidden rounded-xl bg-blue-gray-500 bg-clip-border shadow-lg dark:shadow-muted/60 shadow-black', className)}>
       {children}
     </div>
   )
 }
-export const CardBody = ({ children, className, ...props }: CardProps) => {
+export const CardBody = ({ children, className, ...props }: React.HTMLAttributes<HTMLDivElement>) => {
   return (
     <div {...props} className={cn('p-6', className)}>
       {children}
     </div>
   )
 }
-export const CardHeading = ({ children, className, ...props }: CardProps) => {
+export const CardHeading = ({ children, className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => {
   return (
     <h1 {...props} className={cn('mb-2 block text-xl font-semibold leading-snug tracking-normal text-blue-gray-900 antialiased', className)}>
       {children}
     </h1>
   )
 }
-export const CardDescription = ({ children, className, ...props }: CardProps) => {
+export const CardDescription = ({ children, className, ...props }: React.HTMLAttributes<HTMLParagraphElement>) => {
   return (
     <p {...props} className={cn('block text-base font-light leading-relaxed text-inherit antialiased', className)}>
       {children}
     </p>
   )
 }
-export const CardFooter = ({ children, className, ...props }: CardProps) => {
+export const CardFooter = ({ children, className, ...props }: React.HTMLAttributes<HTMLDivElement>) => {
   return (
     <div {...props} className={cn('p-6 pt-0', className)}>
       {children}
@@ -279,7 +274,7 @@ export const CardFooter = ({ children, className, ...props }: CardProps) => {
 
 /*  You can use the below code as boilerplate for your own card, otherwise it is absolutely unrequired */
 /*  Card Image is optional */
-export const CardDemo = () => {
+const CardDemo = () => {
   return (
     <Card className='mb-10 mt-16'>
       <CardImage>
@@ -387,20 +382,19 @@ export default Chip`
     name: "dialog",
     desc: "A modal window that displays content or prompts the user for input, blocking the main interface.",
     link: "dialog",
-    preview: <DialogDemo/>,
-    props: ['isOpen (required)', 'onClose (required)', 'children (required)', 'outSideModalClassName', 'modalContainerClassName', 'closeButtonClassName', 'modalContentClassName'],
-    propsDesc: ['Whether the dialog is open or closed.', 'Function to close the dialog.', 'The content of the dialog.', 'Additional class name(s) for the outside modal.', 'Additional class name(s) for the modal container.', 'Additional class name(s) for the close button.', 'Additional class name(s) for the modal content.'],
-    propTypes: ['boolean', '() => void', 'React.ReactNode', 'string', 'string', 'string', 'string'],
+    preview: <DialogDemo />,
+    props: ['isOpen (required)', 'onClose (required)', 'outSideModalClassName', 'modalContainerClassName', 'closeButtonClassName', 'modalContentClassName'],
+    propsDesc: ['Whether the dialog is open or closed.', 'Function to close the dialog.', 'Additional class name(s) for the outside modal.', 'Additional class name(s) for the modal container.', 'Additional class name(s) for the close button.', 'Additional class name(s) for the modal content.'],
+    propTypes: ['boolean', 'VoidFunction', 'string', 'string', 'string', 'string'],
     code: `"use client"
 import React, { useEffect, useState } from 'react';
 import Button from './button';
 import { X } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
-type DialogProps = {
+interface DialogProps extends React.HTMLAttributes<HTMLDivElement> {
   isOpen: boolean;
-  onClose: () => void;
-  children: React.ReactNode;
+  onClose: VoidFunction;
   outSideDialogClassName?: string;
   dialogContainerClassName?: string;
   closeButtonClassName?: string;
@@ -415,6 +409,7 @@ const Dialog = ({
   dialogContainerClassName,
   closeButtonClassName,
   dialogContentClassName,
+  ...props
 }: DialogProps) => {
 
   useEffect(() => {
@@ -443,8 +438,8 @@ const Dialog = ({
   if (!isOpen) return null;
 
   return (
-    <div onClick={handleOverlayClick} className={cn("fixed inset-0 z-50 flex items-center justify-center backdrop-filter backdrop-blur-sm bg-opacity-40", outSideDialogClassName)}>
-      <div className={cn("bg-background border border-foreground/30 p-4 sm:p-6 rounded-lg shadow-lg max-w-md w-3/4 sm:w-full", dialogContainerClassName)}>
+    <div {...props} onClick={handleOverlayClick} className={cn("fixed inset-0 z-50 flex items-center justify-center backdrop-filter backdrop-blur-sm bg-opacity-40", outSideDialogClassName)}>
+      <div className={cn("bg-background border border-muted-foreground/30 p-4 sm:p-6 rounded-lg shadow-lg max-w-md w-3/4 sm:w-full", dialogContainerClassName)}>
         <div className="flex justify-end">
           <Button
             variant='link'
@@ -461,7 +456,7 @@ const Dialog = ({
   )
 }
 
-/*  You can use the below code as boilerplate for your own card, otherwise it is absolutely unrequired */
+/*  You can use the below code as boilerplate for your own dialog, otherwise it is absolutely unrequired */
 export const DialogDemo = () => {
   const [isOpen, setIsOpen] = useState(false);
   const openDialog = () => setIsOpen(true);
@@ -486,11 +481,92 @@ export default Dialog;`
     name: "dropdown menu",
     desc: "A menu that appears when the user clicks or hovers over a trigger element, allowing them to select an option.",
     link: "dropdown-menu",
-    preview: <DropdownMenu />,
-    props: [],
-    propsDesc: [],
-    propTypes: [],
-    code: ``
+    preview: <DropdownMenuDemo />,
+    props: ['className'],
+    propsDesc: ['Additional class name(s) for all the card components.'],
+    propTypes: ['string'],
+    code: `'use client'
+import React, { useState } from 'react'
+import Link from 'next/link';
+import Button from './button';
+import { cn } from '@/lib/utils';
+import { ChevronDown } from 'lucide-react';
+
+export const Dialog = ({ children, ...props }: React.HTMLAttributes<HTMLDivElement>) => {
+  return (
+    <div {...props} className='w-full flex justify-center items-center'>
+      <div className="relative inline-block">
+        {children}
+      </div>
+    </div>
+  )
+}
+
+export const DropdownMenuGroup = ({ children, className, ...props }: React.HTMLAttributes<HTMLDivElement>) => {
+  return (
+    <div {...props} className={cn("origin-top-right absolute right-0 mt-2 w-44 rounded-lg shadow-lg bg-background border border-muted-foreground/30", className)}>
+      <ul role="menu" aria-orientation="vertical" aria-labelledby="options-menu">
+        {children}
+      </ul>
+    </div>
+  )
+}
+
+export const DropdownMenuItem = ({ children, closeDropdown, className, ...props }: React.HTMLAttributes<HTMLLIElement> & { closeDropdown: VoidFunction }) => {
+  return (
+    <li {...props} onClick={closeDropdown} className={cn("block transition-colors px-2 py-1 m-1 text-sm text-muted-foreground hover:bg-input rounded-lg", className)}>
+      {children}
+    </li>
+  )
+}
+
+export const DropdownMenuTrigger = ({ children, className, ...props }: React.HTMLAttributes<HTMLDivElement>) => {
+  return (
+    <div {...props} className={cn('', className)}>
+      {children}
+    </div>
+  )
+}
+
+
+/*  You can use the below code as boilerplate for your own dropdown, otherwise it is absolutely unrequired */
+export const DropdownMenuDemo = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleDropdown = () => {
+    setIsOpen(!isOpen);
+  };
+
+  const closeDropdown = () => {
+    setIsOpen(false);
+  };
+
+  return (
+    <Dialog>
+      <DropdownMenuTrigger>
+        <Button
+          className="inline-flex gap-2 items-center"
+          onClick={toggleDropdown}
+        >
+          Dropdown <ChevronDown className="size-4" />
+        </Button>
+      </DropdownMenuTrigger>
+      {isOpen && (
+        <DropdownMenuGroup>
+          <DropdownMenuItem closeDropdown={closeDropdown}>
+            <Link href="#">Option 1</Link>
+          </DropdownMenuItem>
+          <DropdownMenuItem closeDropdown={closeDropdown}>
+            <Link href="#">Option 2</Link>
+          </DropdownMenuItem>
+          <DropdownMenuItem closeDropdown={closeDropdown}>
+            <Link href="#">Option 3</Link>
+          </DropdownMenuItem>
+        </DropdownMenuGroup>
+      )}
+    </Dialog>
+  )
+}`
   },
   {
     name: "form",

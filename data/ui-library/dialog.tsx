@@ -4,10 +4,9 @@ import Button from './button';
 import { X } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
-type DialogProps = {
+interface DialogProps extends React.HTMLAttributes<HTMLDivElement> {
   isOpen: boolean;
-  onClose: () => void;
-  children: React.ReactNode;
+  onClose: VoidFunction;
   outSideDialogClassName?: string;
   dialogContainerClassName?: string;
   closeButtonClassName?: string;
@@ -22,6 +21,7 @@ const Dialog = ({
   dialogContainerClassName,
   closeButtonClassName,
   dialogContentClassName,
+  ...props
 }: DialogProps) => {
 
   useEffect(() => {
@@ -50,8 +50,8 @@ const Dialog = ({
   if (!isOpen) return null;
 
   return (
-    <div onClick={handleOverlayClick} className={cn("fixed inset-0 z-50 flex items-center justify-center backdrop-filter backdrop-blur-sm bg-opacity-40", outSideDialogClassName)}>
-      <div className={cn("bg-background border border-foreground/30 p-4 sm:p-6 rounded-lg shadow-lg max-w-md w-3/4 sm:w-full", dialogContainerClassName)}>
+    <div {...props} onClick={handleOverlayClick} className={cn("fixed inset-0 z-50 flex items-center justify-center backdrop-filter backdrop-blur-sm bg-opacity-40", outSideDialogClassName)}>
+      <div className={cn("bg-background border border-muted-foreground/30 p-4 sm:p-6 rounded-lg shadow-lg max-w-md w-3/4 sm:w-full", dialogContainerClassName)}>
         <div className="flex justify-end">
           <Button
             variant='link'
@@ -68,7 +68,7 @@ const Dialog = ({
   )
 }
 
-/*  You can use the below code as boilerplate for your own card, otherwise it is absolutely unrequired */
+/*  You can use the below code as boilerplate for your own dialog, otherwise it is absolutely unrequired */
 export const DialogDemo = () => {
   const [isOpen, setIsOpen] = useState(false);
   const openDialog = () => setIsOpen(true);
