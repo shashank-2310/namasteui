@@ -27,13 +27,13 @@ const Hero = () => {
                 </p>
                 <div className='flex flex-col lg:flex-row gap-5 lg:gap-8 mt-1 sm:mt-0'>
                     <Link href={"/docs/components"}>
-                        <Button size="lg" className='rounded-xl w-full hover:bg-purple flex flex-row gap-1 items-center text-base'>
+                        <Button size="lg" className='rounded-xl w-full hover:bg-purple-0 flex flex-row gap-1 items-center text-base'>
                             Browse Components
                             <ChevronRight />
                         </Button>
                     </Link>
                     <Link href={"/docs"}>
-                        <Button size="lg" variant="outline" className='rounded-xl w-full hover:bg-purple flex flex-row gap-1 items-center text-base'>
+                        <Button size="lg" variant="outline" className='rounded-xl w-full hover:bg-purple-0 flex flex-row gap-1 items-center text-base'>
                             Get Started
                             <ChevronRight />
                         </Button>

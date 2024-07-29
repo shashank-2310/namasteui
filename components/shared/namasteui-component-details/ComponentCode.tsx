@@ -14,7 +14,7 @@ export default function ComponentCode({ componentName }: ComponentProps) {
         <div className="flex justify-between bg-grey50 items-center px-6 pt-2 pb-4 border border-muted-foreground/30 rounded-lg w-full relative">
             <ClipboardCopyBtn id="code" />
             <div className="py-2">
-                <ScrollArea className="h-[50dvh] text-base" id="code">
+                <ScrollArea className={`text-base ${componentName === 'preloader' ? 'h-[50dvh] sm:h-[40dvh]' : 'h-[50dvh]'}`} id="code">
                     <CodeBlock componentName={componentName} />
                 </ScrollArea>
             </div>

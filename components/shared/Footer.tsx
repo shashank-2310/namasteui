@@ -8,7 +8,7 @@ const Footer = () => {
                 Brought to you by&nbsp;
                 <Link
                     href={"https://linkedin.com/in/shashankgupta23"}
-                    className='underline hover:text-purple'
+                    className='underline hover:text-purple-0'
                     target='_blank'
                     rel='noopener noreferrer'
                 >
@@ -19,7 +19,7 @@ const Footer = () => {
                 Checkout my&nbsp;
                 <Link
                     href={"https://shashankgupta-portfolio.vercel.app/"}
-                    className='underline hover:text-purple'
+                    className='underline hover:text-purple-0'
                     target='_blank'
                     rel='noopener noreferrer'
                 >
@@ -30,7 +30,7 @@ const Footer = () => {
                 Code is available on&nbsp;
                 <Link
                     href={"https://github.com/shashank-2310/namasteui"}
-                    className='underline hover:text-purple'
+                    className='underline hover:text-purple-0'
                     target='_blank'
                     rel='noopener noreferrer'
                 >

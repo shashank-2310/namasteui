@@ -12,8 +12,20 @@ import Components from '@/data/ComponentList'
 
 
 const PropsGrid = ({ componentName }: ComponentProps) => {
+
+    const checkLength = () => {
+        let length = 0;
+        Components.map((item) => {
+            if (item.name === componentName) {
+                length = item.props.length;
+            }
+            return null;
+        });
+        return length;
+    }
+    
     return (
-        <div className='flex flex-col gap-3 w-full lg:w-11/12' id='props'>
+        <div className={`flex flex-col gap-3 w-full lg:w-11/12 ${checkLength() === 0 ? 'hidden' : ''}`} id='props'>
             <h1 className='font-semibold text-base sm:text-lg lg:text-xl'>Props</h1>
             <Table>
                 <TableHeader>
@@ -41,7 +53,6 @@ const PropsGrid = ({ componentName }: ComponentProps) => {
                 })}
             </Table>
         </div>
-
     )
 }
 

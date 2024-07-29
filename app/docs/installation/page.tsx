@@ -22,7 +22,7 @@ const page = () => {
                     <ChevronRight /> Refer to shadcn installation&nbsp;
                     <Link
                         href={"https://ui.shadcn.com/docs/installation"}
-                        className='underline hover:text-purple'
+                        className='underline hover:text-purple-0'
                         target='_blank'
                         rel='noopener noreferrer'
                     >docs</Link>

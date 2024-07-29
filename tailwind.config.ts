@@ -20,7 +20,7 @@ const config = {
     },
     extend: {
       colors: {
-        "purple": "#9b92f8",
+        "purple-0": "#9b92f8",
         "black90": "#242424",
         "black95": "#181818",
         "black100": "#0c0c0c",

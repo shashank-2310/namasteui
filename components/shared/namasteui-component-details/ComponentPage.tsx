@@ -1,16 +1,35 @@
 "use client";
 
-import { usePathname } from 'next/navigation';
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import { redirect, usePathname } from 'next/navigation';
 import ComponentIntro from './ComponentIntro';
 import ComponentPreviewAndCode from './ComponentPreviewAndCode';
 import ComponentInstallation from './ComponentInstallation';
 import PropsGrid from './PropsGrid';
 import NextPrevBtn from './NextPrevBtn';
 import ScrollLink from '../ScrollLink';
+import Components from '@/data/ComponentList';
+import Preloader from '../Preloader';
 
 const ComponentPage = () => {
     const pathName = usePathname().split('/').pop()?.replace(/-/g, ' ') || 'Component';
+    const [showPreloader, setShowPreloader] = useState(true);
+
+    useEffect(() => {
+        if (!Components.map((component) => component.name).includes(pathName)) {
+            redirect('/404');
+        }
+        const timer = setTimeout(() => {
+            setShowPreloader(false);
+        }, 750);
+
+        return () => clearTimeout(timer);
+    }, [pathName]);
+
+    if (showPreloader) {
+        return <Preloader />;
+    }
+
 
     return (
         <section className='flex flex-col gap-6 sm:gap-8 lg:gap-12 w-full py-2 px-4 sm:p-7 lg:p-12'>

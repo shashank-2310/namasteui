@@ -14,7 +14,7 @@ const ComponentInstallation = ({ componentName }: ComponentProps) => {
     const cmpntName = componentName.replace(/ /g, '');
 
     return (
-        <div className="flex flex-col gap-6 w-full lg:w-3/4" id='installation'>
+        <div className="flex flex-col gap-6 w-full lg:w-auto" id='installation'>
             <InstallationBlock componentName={cmpntName} />
             <div className="flex flex-col gap-3" id='sourcecode'>
                 <h2 className='flex flex-row text-base text-muted-foreground'>
@@ -67,6 +67,7 @@ export function cn(...inputs: ClassValue[]) {
                         <span className='text-green-500'>
                             i clsx tailwind-merge
                             {componentName === 'checkbox' && ' @tailwindcss/forms'}
+                            {componentName === 'form' && ' zod react-hook-form @hookform/resolvers'}
                         </span>
                     </p>
                 </div>

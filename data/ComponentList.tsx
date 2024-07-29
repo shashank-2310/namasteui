@@ -8,10 +8,12 @@ import CheckBox from './ui-library/checkbox';
 import { ChipShowcase } from './ui-library/chip';
 import { DialogDemo } from './ui-library/dialog';
 import { DropdownMenuDemo } from './ui-library/dropdownmenu';
-import FormComponent from './ui-library/FormComponent';
-import InputComponent from './ui-library/InputComponent';
-import LabelComponent from './ui-library/LabelComponent';
-import NavigationMenuComponent from './ui-library/NavigationMenuComponent';
+import Form from './ui-library/form';
+import HoverCard from './ui-library/hovercard';
+import { InputDemo } from './ui-library/input';
+import { LabelDemo } from './ui-library/label';
+import Menubar from './ui-library/menubar';
+import Preloader from '@/components/shared/Preloader';
 import ProgressComponent from './ui-library/ProgressComponent';
 import SelectComponent from './ui-library/SelectComponent';
 import SeparatorComponent from './ui-library/SeparatorComponent';
@@ -19,7 +21,6 @@ import SliderComponent from './ui-library/SliderComponent';
 import TabsComponent from './ui-library/TabsComponent';
 import ToastComponent from './ui-library/ToastComponent';
 import ToggleComponent from './ui-library/ToggleComponent';
-import MenubarComponent from './ui-library/MenubarComponent';
 import TextAreaComponent from './ui-library/TextAreaComponent';
 
 type ComponentType = {
@@ -572,51 +573,262 @@ export const DropdownMenuDemo = () => {
     name: "form",
     desc: "A container for collecting user input, such as text, numbers, or selections.",
     link: "form",
-    preview: <FormComponent />,
+    preview: <Form />,
     props: [],
     propsDesc: [],
     propTypes: [],
-    code: ``
+    code: `"use client"
+
+import React from "react"
+import { z } from "zod"
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import Button from "./button";
+import Label from "./label";
+import Input from "./input";
+
+export type FormData = {
+  name: string;
+  email: string;
+  message: string;
+};
+
+const Form = () => {
+
+  // The schema can be edited to add more fields or change the validation rules.
+  const schema = z.object({
+    name: z.string().min(2, "Name is required").regex(/^[a-zA-Z\s]+$/, "Name can only contain letters and spaces"),
+    email: z.string().email("Please enter a valid email address"),
+    message: z.string().min(5, "Message must be at least 10 characters long"),
+  })
+
+  const {
+    handleSubmit,
+    register,
+    formState: { errors }
+  } = useForm<FormData>({
+    resolver: zodResolver(schema),
+  })
+
+  const onSubmit = (data: FormData) => {
+    // Form submission logic
+  }
+
+  return (
+    // Below is a simple contact form with name, email, and message fields.
+    <div className="w-full max-w-md mx-auto py-4 px-4 sm:px-6 lg:px-8 lg:py-6 my-10 space-y-4 bg-primary text-background border border-muted-foreground/30 rounded-lg overflow-hidden">
+      <div className="text-center">
+        <h2 className="text-2xl font-bold text-blue-600">Get in Touch</h2>
+        <p className="mt-2 text-sm">
+          Have a question or want to work together? Fill out the form below and We&apos;ll get back to you as soon as possible.
+        </p>
+      </div>
+      <form className="space-y-4" onSubmit={handleSubmit(onSubmit)}>
+        <div>
+          <Label htmlFor="name" className="block text-sm font-medium">
+            Name
+          </Label>
+          <div className="mt-1">
+            <Input
+              // {...register('name')}  --> This is the react-hook-form way of registering the input field. Uncomment this line while using the form.
+              id="name"
+              name="name"
+              type="text"
+              autoComplete="name"
+              placeholder="Your name"
+              className={\`block w-full px-3 py-2 bg-primary \${errors.name ? "border-red-500" : ""}\`}
+            />
+            {errors.name && <p className="mt-2 text-sm text-red-500">{String(errors.name.message)}</p>}
+          </div>
+        </div>
+        <div>
+          <Label htmlFor="email" className="block text-sm font-medium">
+            Email
+          </Label>
+          <div className="mt-1">
+            <Input
+              // {...register('email')}  --> This is the react-hook-form way of registering the input field. Uncomment this line while using the form.
+              id="email"
+              name="email"
+              type="email"
+              autoComplete="email"
+              placeholder="Your email"
+              className={\`block w-full px-3 py-2 bg-primary \${errors.email ? "border-red-500" : ""}\`}
+            />
+            {errors.email && <p className="mt-2 text-sm text-red-500">{String(errors.email.message)}</p>}
+          </div>
+        </div>
+        <div>
+          <Label htmlFor="message" className="block text-sm font-medium">
+            Message
+          </Label>
+          <div className="mt-1">
+            <textarea
+              // {...register('message')}  --> This is the react-hook-form way of registering the input field. Uncomment this line while using the form.
+              id="message"
+              name="message"
+              rows={4}
+              placeholder="Your message"
+              className={\`block w-full rounded-lg p-2 bg-primary border-muted-foreground/30 focus:border-none focus:outline-none \${errors.message ? "border-red-500" : ""}\`}
+            />
+            {errors.message && <p className="mt-2 text-sm text-red-500">{String(errors.message.message)}</p>}
+          </div>
+        </div>
+        <div>
+          <Button type="submit" variant="primary" className="w-full rounded-xl">
+            Submit
+          </Button>
+        </div>
+      </form>
+    </div>
+  )
+}
+
+export default Form`,
+  },
+  {
+    name: "hover card",
+    desc: "A card that reveals additional content when hovered over.",
+    link: "hover-card",
+    preview: <HoverCard />,
+    props: [],
+    propsDesc: [],
+    propTypes: [],
+    code: `import React from 'react'
+
+const HoverCard = () => {
+    return (
+        // You can replace the style of this component with your own custom Tailwind CSS.
+        <div className="relative overflow-hidden w-60 h-80 rounded-3xl cursor-pointer text-2xl font-semibold bg-blue-500">
+            <div className="z-10 absolute w-full h-full peer"/>
+            <div className="absolute peer-hover:-top-20 peer-hover:-left-16 peer-hover:w-[140%] peer-hover:h-[140%] -top-32 -left-16 w-32 h-44 rounded-full bg-blue-400 transition-all duration-500"
+            />
+            <div className="absolute flex text-xl text-center items-end justify-end peer-hover:right-0 peer-hover:rounded-b-none peer-hover:bottom-0 peer-hover:items-center peer-hover:justify-center peer-hover:w-full peer-hover:h-full -bottom-32 -right-16 w-36 h-44 rounded-full bg-blue-400 transition-all duration-500">
+                Namaste World!
+            </div>
+            <div className="w-full h-full items-center justify-center flex uppercase">
+                hover me
+            </div>
+        </div>
+
+    )
+}
+
+export default HoverCard`
   },
   {
     name: "input",
     desc: "Allows the user to enter and edit text, numbers, or other data.",
     link: "input",
-    preview: <InputComponent />,
-    props: [],
-    propsDesc: [],
-    propTypes: [],
-    code: ``
+    preview: <InputDemo />,
+    props: ['className', 'type', 'placeholder'],
+    propsDesc: ['Additional class name(s) for the input.', 'The type of input.', 'The placeholder text for the input.'],
+    propTypes: ['string', 'string', 'string'],
+    code: `import React from 'react'
+import { cn } from '@/lib/utils'
+
+const Input = ({className, ...props} : React.InputHTMLAttributes<HTMLInputElement>) => {
+  return (
+    <input {...props} className={cn('rounded-lg p-2 bg-background border-muted-foreground/30 focus:border-none focus:outline-none', className)} />
+  )
+}
+
+/*  Below is just an example. */
+export const InputDemo = () => {
+  return (
+    <Input placeholder='Email' type='email' className='w-72 text-sm' />
+  )
+}
+
+export default Input`
   },
   {
     name: "label",
     desc: "Provides a descriptive text label for an input or other UI element.",
     link: "label",
-    preview: <LabelComponent />,
-    props: [],
-    propsDesc: [],
-    propTypes: [],
-    code: ``
+    preview: <LabelDemo />,
+    props: ['className', 'htmlFor'],
+    propsDesc: ['Additional class name(s) for the label.', 'The ID of the input element that the label is associated with.'],
+    propTypes: ['string', 'string'],
+    code: `import React from 'react'
+import CheckBox from './checkbox'
+import { cn } from '@/lib/utils'
+
+const Label = ({ children, className, ...props }: React.LabelHTMLAttributes<HTMLLabelElement>) => {
+  return (
+    <label {...props} className={cn('text-base',className)}>
+      {children}
+    </label>
+  )
+}
+
+/*  Below is just an example. */
+export const LabelDemo = () => {
+  return (
+    <div className='flex flex-row gap-2 items-center'>
+      <CheckBox className='size-4 rounded' id='newsletter' />
+      <Label htmlFor='newsletter'>
+        Do you wish to receive our newsletter?
+      </Label>
+    </div>
+  )
+}
+
+export default Label`
   },
   {
     name: "menubar",
     desc: "A horizontal menu bar that provides access to various commands or actions.",
     link: "menubar",
-    preview: <MenubarComponent />,
+    preview: <Menubar />,
     props: [],
     propsDesc: [],
     propTypes: [],
-    code: ``
+    code: `import React from 'react'
+import { Home, MessageCircle, Settings, User } from 'lucide-react'
+
+const Menubar = () => {
+  return (
+    <div className="border border-muted-foreground/50 py-2 flex gap-1 rounded-lg">
+      <div className="group relative px-3 cursor-pointer">
+        <Home className='size-8 hover:text-blue-500' />
+      </div>
+      <div className="group relative px-3 cursor-pointer">
+        <MessageCircle className='size-8 hover:text-blue-500' />
+      </div>
+      <div className="group relative px-3 cursor-pointer">
+        <User className='size-8 hover:text-blue-500' />
+      </div>
+      <div className="group relative px-3 cursor-pointer">
+        <Settings className='size-8 hover:text-blue-500' />
+      </div>
+    </div>
+  )
+}
+
+export default Menubar`
   },
   {
-    name: "navigation menu",
-    desc: "A menu that allows the user to navigate to different sections or pages of an application.",
-    link: "navigation-menu",
-    preview: <NavigationMenuComponent />,
+    name: "preloader",
+    desc: "A visual indicator that shows the progress of a task or operation.",
+    link: "preloader",
+    preview: <Preloader />,
     props: [],
     propsDesc: [],
     propTypes: [],
-    code: ``
+    code: `import React from 'react'
+
+const Preloader = () => {
+    return (
+        <div className="flex flex-row gap-2 h-[90dvh] w-full xl:w-1/2 items-center justify-center">
+            <div className="size-4 rounded-full bg-muted-foreground animate-bounce [animation-delay:.5s]"/>
+            <div className="size-4 rounded-full bg-muted-foreground animate-bounce [animation-delay:.2s]"/>
+            <div className="size-4 rounded-full bg-muted-foreground animate-bounce [animation-delay:.5s]"/>
+        </div>
+    )
+}
+
+export default Preloader`
   },
   {
     name: "progress",

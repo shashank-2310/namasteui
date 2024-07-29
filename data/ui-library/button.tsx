@@ -6,7 +6,6 @@ import { User2Icon } from 'lucide-react'
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: 'default' | 'destructive' | 'outline' | 'secondary' | 'ghost' | 'link' | 'success' | 'warning' | 'primary',
   size?: 'default' | 'sm' | 'lg' | 'icon'
-  className?: string,
 }
 
 const buttonVariants = cva(
@@ -55,8 +54,8 @@ const Button = ({
 
 export const ButtonsShowCase = () => {
   return (
-    <div className="flex flex-col flex-wrap gap-6 w-full">
-      <div className="flex flex-row flex-wrap gap-2 w-full">
+    <div className="flex flex-col flex-wrap gap-6 sm:gap-8 lg:gap-10 w-full">
+      <div className="flex flex-row flex-wrap gap-2 sm:gap-4 lg:gap-6 w-full">
         <Button>Default</Button>
         <Button variant='primary'>Primary</Button>
         <Button variant='secondary'>Secondary</Button>
