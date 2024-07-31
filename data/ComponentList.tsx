@@ -14,9 +14,8 @@ import { InputDemo } from './ui-library/input';
 import { LabelDemo } from './ui-library/label';
 import Menubar from './ui-library/menubar';
 import Preloader from '@/components/shared/Preloader';
-import ProgressComponent from './ui-library/ProgressComponent';
-import SelectComponent from './ui-library/SelectComponent';
-import SeparatorComponent from './ui-library/SeparatorComponent';
+import Progress from './ui-library/progress';
+import { SeparatorDemo } from './ui-library/separator';
 import SliderComponent from './ui-library/SliderComponent';
 import TabsComponent from './ui-library/TabsComponent';
 import ToastComponent from './ui-library/ToastComponent';
@@ -834,31 +833,46 @@ export default Preloader`
     name: "progress",
     desc: "Displays the current progress of a task or operation, often as a visual bar or circular indicator.",
     link: "progress",
-    preview: <ProgressComponent />,
-    props: [],
-    propsDesc: [],
-    propTypes: [],
-    code: ``
-  },
-  {
-    name: "select",
-    desc: "Allows the user to choose one or more options from a dropdown list.",
-    link: "select",
-    preview: <SelectComponent />,
-    props: [],
-    propsDesc: [],
-    propTypes: [],
-    code: ``
+    preview: <Progress />,
+    props: ['value', 'progressClassName', 'className'],
+    propsDesc: ['The current progress value.', 'Additional class name(s) for the progress bar.', 'Additional class name(s) for the progress container.'],
+    propTypes: ['number', 'string', 'string'],
+    code: `import React from 'react'
+import { cn } from '@/lib/utils'
+
+interface ProgressProps extends React.HTMLAttributes<HTMLDivElement> {
+  value: number;
+  progressClassName?: string;
+}
+
+const Progress = ({ value = 60, progressClassName, className, ...props }: ProgressProps) => {
+  return (
+    <div className={cn("relative h-4 w-full overflow-hidden rounded-full bg-secondary", className)}>
+      <div {...props} className={cn("h-full w-full flex-1 bg-primary transition-all", progressClassName)}
+        style={{ transform: \`translateX(-\${100 - (value || 0)}%)\`}} />
+    </div>
+  )
+}
+
+export default Progress`
   },
   {
     name: "separator",
     desc: "A visual divider that separates and groups related content or UI elements.",
     link: "separator",
-    preview: <SeparatorComponent />,
-    props: [],
-    propsDesc: [],
-    propTypes: [],
-    code: ``
+    preview: <SeparatorDemo />,
+    props: ['className'],
+    propsDesc: ['Additional class name(s) for the separator.'],
+    propTypes: ['string'],
+    code: `import { cn } from '@/lib/utils'
+import React from 'react'
+
+const Separator = ({ className, ...props }: React.HTMLAttributes<HTMLHRElement>) => {
+  return (
+    <hr {...props} className={cn('border border-muted-foreground/30 my-2 h-px rounded w-full', className)} />
+  )
+}
+export default Separator`
   },
   {
     name: "slider",
