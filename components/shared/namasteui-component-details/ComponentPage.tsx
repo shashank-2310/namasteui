@@ -30,6 +30,17 @@ const ComponentPage = () => {
         return <Preloader />;
     }
 
+    const checkPropsLength = () => {
+        let length = 0;
+        Components.map((item) => {
+            if (item.name === pathName) {
+                length = item.props.length;
+            }
+            return null;
+        });
+        return length;
+    }
+
 
     return (
         <section className='flex flex-col gap-6 sm:gap-8 lg:gap-12 w-full py-2 px-4 sm:p-7 lg:p-12'>
@@ -42,7 +53,7 @@ const ComponentPage = () => {
                     <nav className='flex flex-col text-sm text-muted-foreground gap-2'>
                         <ScrollLink href='#installation'>Installation</ScrollLink>
                         <ScrollLink href='#sourcecode'>Source Code</ScrollLink>
-                        <ScrollLink href='#props'>Props</ScrollLink>
+                        {checkPropsLength() > 0 && <ScrollLink href='#props'>Props</ScrollLink>}
                     </nav>
                 </div>
             </div>
@@ -50,7 +61,7 @@ const ComponentPage = () => {
                 <ComponentPreviewAndCode componentName={pathName} />
                 <ComponentInstallation componentName={pathName} />
             </div>
-            <PropsGrid componentName={pathName} />
+            {checkPropsLength() > 0 && <PropsGrid componentName={pathName} />}
             <NextPrevBtn componentName={pathName} />
         </section>
     )
