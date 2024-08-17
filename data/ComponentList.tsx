@@ -16,11 +16,8 @@ import Menubar from './ui-library/menubar';
 import Preloader from '@/components/shared/Preloader';
 import Progress from './ui-library/progress';
 import { SeparatorDemo } from './ui-library/separator';
-import SliderComponent from './ui-library/SliderComponent';
-import TabsComponent from './ui-library/TabsComponent';
-import ToastComponent from './ui-library/ToastComponent';
-import ToggleComponent from './ui-library/ToggleComponent';
-import TextAreaComponent from './ui-library/TextAreaComponent';
+import Slider from './ui-library/slider';
+import TextArea from './ui-library/textarea';
 
 type ComponentType = {
   name: string;
@@ -878,51 +875,91 @@ export default Separator`
     name: "slider",
     desc: "Allows the user to select a value from a range by dragging a handle along a track.",
     link: "slider",
-    preview: <SliderComponent />,
-    props: [],
-    propsDesc: [],
-    propTypes: [],
-    code: ``
-  },
-  {
-    name: "tabs",
-    desc: "A set of related content panels that can be switched between by clicking on their corresponding tab.",
-    link: "tabs",
-    preview: <TabsComponent />,
-    props: [],
-    propsDesc: [],
-    propTypes: [],
-    code: ``
+    preview: <Slider />,
+    props: ['min', 'max', 'step', 'value', 'onChange', 'className', 'valueClassName'],
+    propsDesc: ['The minimum value of the slider.', 'The maximum value of the slider.', 'The step value of the slider.', 'The current value of the slider.', 'Function that is called when the value changes.', 'Additional class name(s) for the slider.', 'Additional class name(s) for the value.'],
+    propTypes: ['number', 'number', 'number', 'number', 'function', 'string', 'string'],
+    code: `"use client";
+import React, { useState } from 'react';
+import { cn } from '@/lib/utils';
+
+interface SliderProps {
+  min?: number;
+  max?: number;
+  step?: number;
+  value?: number;
+  onChange?: (value: number) => void;
+  className?: string;
+  valueClassName?: string;
+}
+
+const Slider: React.FC<SliderProps> = ({
+  min = 0,
+  max = 100,
+  step = 1,
+  value = 0,
+  onChange = () => { console.log('Slider value:', value); },
+  className,
+  valueClassName,
+}) => {
+  const [currentValue, setCurrentValue] = useState(value);
+
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const newValue = Number(event.target.value);
+    setCurrentValue(newValue);
+    if (onChange) {
+      onChange(newValue);
+    }
+  };
+
+  return (
+    <div className="flex flex-col items-center">
+      <input
+        type="range"
+        min={min}
+        max={max}
+        step={step}
+        value={currentValue}
+        onChange={handleChange}
+        className={cn("w-full h-2 bg-muted-foreground accent-accent-foreground rounded-full appearance-none cursor-pointer", className)}
+      />
+      <span className={cn("flex justify-center w-full text-sm text-muted-foreground mt-2", valueClassName)}>
+        {currentValue}
+      </span>
+    </div>
+  );
+};
+
+export default Slider;`
   },
   {
     name: "textarea",
     desc: "Allows the user to enter and edit multi-line text, often used for longer form inputs.",
     link: "textarea",
-    preview: <TextAreaComponent />,
-    props: [],
-    propsDesc: [],
-    propTypes: [],
-    code: ``
-  },
-  {
-    name: "toast",
-    desc: "A temporary, non-intrusive notification that appears and disappears automatically.",
-    link: "toast",
-    preview: <ToastComponent />,
-    props: [],
-    propsDesc: [],
-    propTypes: [],
-    code: ``
-  },
-  {
-    name: "toggle",
-    desc: "Provides a switch-like control that allows the user to enable or disable a setting or option.",
-    link: "toggle",
-    preview: <ToggleComponent />,
-    props: [],
-    propsDesc: [],
-    propTypes: [],
-    code: ``
+    preview: <TextArea placeholder='Type here...' />,
+    props: ['className', 'placeholder'],
+    propsDesc: ['Additional class name(s) for the textarea.', 'The placeholder text for the textarea.'],
+    propTypes: ['string', 'string'],
+    code: `import React from 'react'
+import { cn } from '@/lib/utils'
+
+interface TextAreaProps extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {
+  className?: string
+}
+
+const TextArea = ({className, ...props} : TextAreaProps) => {
+  return (
+    <textarea
+      className={cn(
+        "flex min-h-[80px] w-full rounded-md border border-muted-foreground/30 bg-background/90 px-3 py-2 text-sm placeholder:text-muted-foreground focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50",
+        className
+      )}
+      {...props}
+    />
+  )
+}
+
+export default TextArea`
   }
 ];
 
